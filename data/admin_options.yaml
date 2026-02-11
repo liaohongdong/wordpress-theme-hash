@@ -1,0 +1,86 @@
+{
+  "version": "1.0.0",
+  "title": "hash",
+  "name": "hash",
+  "description": "wordpress hash theme",
+  "keywords": "wordpress,hash,theme",
+  "themes": {},
+  "tab_options": [
+    {
+      "all_set": {
+        "title": "全局设置",
+        "type": "group",
+        "item": [
+          {
+            "key": "index_mode",
+            "title": "首页布局",
+            "type": "radio",
+            "options": [
+              {
+                "key": "blog",
+                "value": "博客风格"
+              },
+              {
+                "key": "cms",
+                "value": "CMS风格"
+              },
+              {
+                "key": "company",
+                "value": "企业风格"
+              }
+            ]
+          },
+          {
+            "key": "post_style",
+            "title": "文章样式",
+            "type": "radio",
+            "options": [
+              {
+                "key": "list",
+                "value": "列表式"
+              },
+              {
+                "key": "card",
+                "value": "卡片式"
+              }
+            ]
+          }
+        ]
+      },
+      "basic_set": {
+        "title": "基础设置",
+        "type": "group"
+      },
+      "third_set": {
+        "title": "第三方设置",
+        "type": "group"
+      },
+      "cms_layout_set": {
+        "title": "CMS布局设置",
+        "type": "group"
+      },
+      "company_layout_set": {
+        "title": "企业布局设置",
+        "type": "group"
+      },
+      "anti_brush_set": {
+        "title": "防刷设置",
+        "type": "group"
+      },
+      "ad_set": {
+        "title": "广告设置",
+        "type": "group"
+      },
+      "smtp_set": {
+        "title": "SMTP设置",
+        "type": "group"
+      },
+      "seo_set": {
+        "title": "SEO设置",
+        "type": "group"
+      }
+    }
+  ],
+  "css": [],
+  "style": {}
+}

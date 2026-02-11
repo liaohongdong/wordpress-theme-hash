@@ -1,0 +1,408 @@
+{
+  "version": "1.0.0",
+  "title": "hash",
+  "name": "hash",
+  "description": "wordpress hash theme",
+  "keywords": "wordpress,hash,theme",
+  "themes": {},
+  "tab_options": [
+    {
+      "global_set": {
+        "title": "全局设置",
+        "type": "group",
+        "item": [
+          {
+            "key": "index_mode",
+            "title": "首页布局",
+            "desc": "首页布局",
+            "type": "radio_arr_obj",
+            "default": "blog",
+            "options": [
+              {
+                "key": "blog",
+                "value": "博客风格"
+              },
+              {
+                "key": "cms",
+                "value": "CMS风格"
+              },
+              {
+                "key": "company",
+                "value": "企业风格"
+              }
+            ]
+          },
+          {
+            "key": "post_style",
+            "title": "文章样式",
+            "desc": "文章样式",
+            "type": "radio_arr_obj",
+            "default": "list",
+            "options": [
+              {
+                "key": "list",
+                "value": "列表式"
+              },
+              {
+                "key": "card",
+                "value": "卡片式"
+              }
+            ]
+          },
+          {
+            "key": "theme_mode",
+            "title": "默认主题模式",
+            "desc": "默认主题模式",
+            "type": "radio",
+            "default": "light",
+            "options": [
+              {
+                "key": "light",
+                "value": "高亮模式"
+              },
+              {
+                "key": "dark",
+                "value": "暗黑模式"
+              }
+            ]
+          },
+          {
+            "key": "change_theme",
+            "title": "允许切换主题模式",
+            "desc": "允许切换主题模式",
+            "type": "radio",
+            "default": "1",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "light_logo",
+            "title": "高亮模式下LOGO",
+            "desc": "比例：500*125，请尽量选择png无底色图片",
+            "type": "upload",
+            "default": ""
+          },
+          {
+            "key": "dark_logo",
+            "title": "暗黑模式下LOGO",
+            "desc": "比例：500*125，请尽量选择png无底色图片",
+            "type": "upload",
+            "default": ""
+          },
+          {
+            "key": "favicon",
+            "title": "网站Favicon",
+            "desc": "比例：1:1",
+            "type": "upload",
+            "default": ""
+          },
+          {
+            "key": "disable_gutenberg",
+            "title": "禁用Gutenberg编辑器",
+            "desc": "禁用Gutenberg编辑器",
+            "type": "radio",
+            "default": "0",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "hide_footer_wp_text",
+            "title": "隐藏底部'感谢使用WordPress进行创作'和左上角标识",
+            "desc": "隐藏底部'感谢使用WordPress进行创作'和左上角标识",
+            "type": "radio",
+            "default": "0",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "site_gray_mode",
+            "title": "全站变灰（可供用于悼念日或其他事件变灰需求）",
+            "desc": "全站变灰（可供用于悼念日或其他事件变灰需求）",
+            "type": "radio",
+            "default": "0",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "index_carousel",
+            "title": "显示首页幻灯片",
+            "desc": "显示首页幻灯片",
+            "type": "radio",
+            "default": "1",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "index_carousel_max",
+            "title": "幻灯最大显示数量",
+            "desc": "幻灯最大显示数量",
+            "type": "text",
+            "default": "10"
+          },
+          {
+            "key": "login_protection",
+            "title": "启用后台登录保护",
+            "desc": "启用后台登录保护",
+            "type": "radio",
+            "default": "1",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "lp_user",
+            "title": "后台登录保护参数",
+            "desc": "后台登录保护参数",
+            "type": "text",
+            "default": "admin"
+          },
+          {
+            "key": "lp_pass",
+            "title": "后台登录保护值",
+            "desc": "后台登录保护值",
+            "type": "text",
+            "default": "admin"
+          }
+        ]
+      }
+    },
+    {
+      "basic_set": {
+        "title": "基础设置",
+        "type": "group",
+        "item": [
+          {
+            "key": "img_lazy_thumb",
+            "title": "启用缩略图延迟加载",
+            "desc": "启用缩略图延迟加载",
+            "type": "radio",
+            "default": "0",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "img_lazy_paged",
+            "title": "启用正文图片延迟加载",
+            "desc": "启用正文图片延迟加载",
+            "type": "radio",
+            "default": "0",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "comment_avatar",
+            "title": "留言头像",
+            "desc": "留言头像",
+            "type": "upload",
+            "default": ""
+          },
+          {
+            "key": "comment_ajax",
+            "title": "评论Ajax翻页",
+            "desc": "评论Ajax翻页",
+            "type": "radio",
+            "default": "0",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "comment_level",
+            "title": "显示评论等级",
+            "desc": "显示评论等级",
+            "type": "radio",
+            "default": "0",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "comment_mail_notify",
+            "title": "评论回复邮件通知",
+            "desc": "评论回复邮件通知",
+            "type": "radio",
+            "default": "0",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "link_blank_content",
+            "title": "新标签页打开内容",
+            "desc": "新标签页打开内容",
+            "type": "radio",
+            "default": "0",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "page_ajax_load",
+            "title": "页面无刷新加载",
+            "desc": "开启（新标签页打开的链接除外）",
+            "type": "radio",
+            "default": "1",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "async_view",
+            "title": "异步浏览量统计",
+            "desc": "开启（此选项为开启缓存后浏览量不自增问题解决方案）",
+            "type": "radio",
+            "default": "0",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "page_animate",
+            "title": "页面模块载入动画",
+            "desc": "页面模块载入动画",
+            "type": "radio",
+            "default": "0",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "comment_has_at",
+            "title": "评论内容显示@",
+            "desc": "评论内容显示@",
+            "type": "radio",
+            "default": "0",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "page_copy_right",
+            "title": "显示正文版权说明",
+            "desc": "显示正文版权说明",
+            "type": "radio",
+            "default": "1",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "page_bottom_recommend",
+            "title": "显示正文底部相关推荐",
+            "desc": "显示正文底部相关推荐",
+            "type": "radio",
+            "default": "0",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "link_page",
+            "title": "友情链接页面",
+            "desc": "友情链接页面",
+            "type": "radio",
+            "default": "0",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "post_reward",
+            "title": "文章赞赏",
+            "desc": "文章赞赏",
+            "type": "radio",
+            "default": "0",
+            "options": [
+              0,
+              1
+            ]
+          },
+          {
+            "key": "post_reward_alipay",
+            "title": "文章赞赏支付宝二维码",
+            "desc": "文章赞赏支付宝二维码",
+            "type": "upload",
+            "default": ""
+          },
+          {
+            "key": "post_reward_wx",
+            "title": "文章赞赏微信二维码",
+            "desc": "文章赞赏微信二维码",
+            "type": "upload",
+            "default": ""
+          }
+        ]
+      }
+    },
+    {
+      "third_set": {
+        "title": "第三方设置",
+        "type": "group"
+      }
+    },
+    {
+      "cms_layout_set": {
+        "title": "CMS布局设置",
+        "type": "group"
+      }
+    },
+    {
+      "company_layout_set": {
+        "title": "企业布局设置",
+        "type": "group"
+      }
+    },
+    {
+      "anti_brush_set": {
+        "title": "防刷设置",
+        "type": "group"
+      }
+    },
+    {
+      "ad_set": {
+        "title": "广告设置",
+        "type": "group"
+      }
+    },
+    {
+      "smtp_set": {
+        "title": "SMTP设置",
+        "type": "group"
+      }
+    },
+    {
+      "seo_set": {
+        "title": "SEO设置",
+        "type": "group"
+      }
+    }
+  ],
+  "css": [],
+  "style": {}
+}

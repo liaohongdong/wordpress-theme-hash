@@ -1,0 +1,106 @@
+# ===================== JS 项目相关 =====================
+# 1. 依赖包目录（Node.js核心）
+node_modules/
+.pnpm-store/  # 兼容pnpm的store目录
+
+# 2. 编译/构建产物
+dist/                 # 通用构建输出
+build/                # 通用构建输出/React CRA构建目录
+out/                  # 通用构建输出
+.vuepress/dist/       # VuePress编译目录
+.vite/                # Vite项目编译缓存
+*.js.map              # TypeScript编译产物
+*.d.ts                # TypeScript类型文件
+tsconfig.tsbuildinfo  # TypeScript编译信息文件
+
+# 3. Vue/React框架专属编译/配置文件
+vue.config.js.local   # Vue CLI本地配置
+.nuxt/                # Nuxt.js编译目录
+nuxt.config.ts.buildinfo # Nuxt.js编译信息
+.next/                # Next.js编译目录
+next-env.d.ts         # Next.js类型声明
+
+# 4. 环境配置与敏感信息（JS/PHP通用的已合并）
+.env                  # 基础环境变量
+.env.local            # 本地环境变量
+.env.development      # React CRA开发环境变量
+.env.development.local # JS开发环境本地变量
+.env.production       # React CRA生产环境变量
+.env.production.local # JS生产环境本地变量
+.env.test             # React CRA测试环境变量
+.env.test.local       # JS测试环境本地变量
+# 锁文件（建议提交，仅注释说明）
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# ===================== PHP 项目相关 =====================
+# 1. 服务器/系统相关文件（跨平台兼容）
+.htaccess            # Apache配置文件（本地调试版，正式版建议提交）
+.htpasswd            # Apache密码文件（含敏感信息，必须忽略）
+nginx.conf           # Nginx本地配置文件
+desktop.ini          # Windows系统配置文件
+
+# 2. PHP运行时/缓存文件
+*.php~               # PHP临时编辑文件
+*.php.swp            # Vim编辑器缓存文件
+*.php.bak            # PHP备份文件
+php_errors.log       # PHP错误日志
+error_log            # Apache/PHP默认错误日志
+composer.lock        # Composer锁文件（可选忽略，建议提交）
+vendor/              # Composer依赖包目录（核心！）
+composer.phar        # Composer可执行文件
+
+# 3. PHP敏感配置文件
+config.php           # PHP通用配置文件（本地调试版）
+database.php         # 数据库配置文件（本地版）
+settings.php         # 系统设置文件（含敏感信息）
+
+# 4. PHP缓存/编译产物
+cache/               # 自定义缓存目录
+uploads/             # 用户上传文件目录（测试环境）
+session/             # Session文件存储目录
+compile/             # 模板编译目录（Smarty/ThinkPHP）
+runtime/             # 框架运行时目录（ThinkPHP/Laravel）
+storage/logs/        # Laravel日志目录
+storage/cache/       # Laravel缓存目录
+storage/sessions/    # Laravel Session目录
+
+# 5. PHP测试相关
+phpunit.xml          # PHPUnit本地配置文件（可选）
+phpunit.xml.dist     # PHPUnit默认配置
+tests/_output/       # PHP测试输出目录
+
+# 6. 编辑器/IDE配置（JS/PHP通用）
+.idea/               # WebStorm/PhpStorm配置
+.vscode/             # VS Code配置
+*.sublime-project    # Sublime Text项目文件
+*.sublime-workspace  # Sublime Text工作区文件
+
+# ===================== 通用忽略规则（JS/PHP共用） =====================
+# 日志文件
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 临时文件
+*.bak
+*.tmp
+*.temp
+
+# 测试/覆盖率报告
+coverage/
+.nyc_output/
+
+# 系统隐藏文件
+.DS_Store  # Mac系统
+Thumbs.db  # Windows缩略图
+
+# 打包/压缩文件
+*.zip
+*.tar.gz
+*.rar
+*.7z
