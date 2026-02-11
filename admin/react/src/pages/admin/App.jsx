@@ -7,6 +7,7 @@ const xx = () => {
 }
 
 const App = () => {
+  console.log(window, 998, window.__params, window.$);
   return (
     <div className="content">
       <p>Start building amazing things with Rsbuild.</p>

@@ -34,6 +34,7 @@ export default defineConfig({
   },
   output: {
     // 与构建产物有关的选项
+    assetPrefix: '<?php echo get_stylesheet_directory_uri() . "/admin/react/dist" ?>',
   },
   resolve: {
     // 与模块解析相关的选项
