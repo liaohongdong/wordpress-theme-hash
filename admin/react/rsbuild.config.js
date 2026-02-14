@@ -3,6 +3,9 @@ import { defineConfig, defaultAllowedOrigins } from '@rsbuild/core';
 import { pluginBabel } from '@rsbuild/plugin-babel';
 import { pluginReact } from '@rsbuild/plugin-react';
 
+import { pluginAfterBuild } from './plugins/after-build';
+import { message } from 'antd';
+
 // Docs: https://rsbuild.rs/config/
 export default defineConfig({
   plugins: [
@@ -17,6 +20,7 @@ export default defineConfig({
         // }]);
       },
     }),
+    pluginAfterBuild(),
   ],
   dev: {
     // 与本地开发有关的选项
