@@ -2,9 +2,9 @@
 import { defineConfig, defaultAllowedOrigins } from '@rsbuild/core';
 import { pluginBabel } from '@rsbuild/plugin-babel';
 import { pluginReact } from '@rsbuild/plugin-react';
+import { pluginSass } from '@rsbuild/plugin-sass';
 
 import { pluginAfterBuild } from './plugins/after-build';
-import { message } from 'antd';
 
 // Docs: https://rsbuild.rs/config/
 export default defineConfig({
@@ -20,6 +20,7 @@ export default defineConfig({
         // }]);
       },
     }),
+    pluginSass(),
     pluginAfterBuild(),
   ],
   dev: {
@@ -42,6 +43,11 @@ export default defineConfig({
   },
   resolve: {
     // 与模块解析相关的选项
+    alias: {
+      '@': './src',
+      '@1': './src',
+      'root': './',
+    },
   },
   source: {
     // 与输入的源代码相关的选项

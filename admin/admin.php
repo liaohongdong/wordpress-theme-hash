@@ -121,7 +121,7 @@ class Admin
 
   static function options_page()
   {
-    require_once get_template_directory() . '/admin/main/dist/index.php';
+    require_once get_template_directory() . '/admin/react/dist/admin.php';
 ?>
     <!-- <style type="text/tailwindcss">
       @import "tailwindcss" prefix(tw);

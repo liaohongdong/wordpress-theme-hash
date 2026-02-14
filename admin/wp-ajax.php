@@ -55,7 +55,7 @@ if (!function_exists('test_me_callback')) {
       wp_send_json(array(
         'success' => false,
         'data' => '',
-        'message' => '安全验证失败，请刷新页面重试1'
+        'message' => '安全验证失败，请刷新页面重试'
       ));
     }
     // if (!wp_verify_nonce($_POST['nonce'], 'test_me_nonce')) {

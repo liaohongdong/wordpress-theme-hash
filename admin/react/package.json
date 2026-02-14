@@ -21,13 +21,16 @@
     "@rsbuild/core": "^1.7.1",
     "@rsbuild/plugin-babel": "^1.1.0",
     "@rsbuild/plugin-react": "^1.4.2",
+    "@rsbuild/plugin-sass": "^1.5.0",
     "@tailwindcss/postcss": "^4.1.18",
     "antd": "^6.2.3",
+    "autoprefixer": "^10.4.24",
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "normalize.css": "^8.0.1",
     "tailwindcss": "^4.1.18"
   }
 }
