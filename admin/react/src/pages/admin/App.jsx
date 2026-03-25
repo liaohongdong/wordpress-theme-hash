@@ -1,14 +1,14 @@
 import './App.css'
 import './style.scss'
 import React from 'react'
-import { Button, Space, DatePicker, version, Tabs } from 'antd'
+import { App, Button, Space, DatePicker, version, Tabs } from 'antd'
 import Children from './components/Children'
 
 const onChange = key => {
   console.log(key, 8);
 };
 
-const App = () => {
+const _App = () => {
   console.log(window, 998123, window.__params, window.$);
   const items = [];
   if (window.__params?.admin_options?.tab_options && window.__params.admin_options.tab_options?.length) {
@@ -24,11 +24,11 @@ const App = () => {
     
   }
   return (
-    <div className="wrapper">
+    <App className="wrapper">
       {/* <h1 className="tw:text-[50px]! tw:font-bold tw:underline">antd version: {version}</h1> */}
       <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
-    </div>
+    </App>
   )
 }
 
-export default App
+export default _App
