@@ -40,7 +40,6 @@ if (!function_exists('_js_parameters')) {
   }
 }
 
-
 add_action('admin_custom_scripts11111', 'save');
 function save()
 {

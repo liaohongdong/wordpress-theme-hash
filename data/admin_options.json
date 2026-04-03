@@ -15,7 +15,7 @@
             "key": "index_mode",
             "title": "首页布局",
             "desc": "首页布局",
-            "type": "radio_arr_obj",
+            "type": "radio",
             "default": "blog",
             "options": [
               {
@@ -36,7 +36,7 @@
             "key": "post_style",
             "title": "文章样式",
             "desc": "文章样式",
-            "type": "radio_arr_obj",
+            "type": "radio",
             "default": "list",
             "options": [
               {
@@ -71,10 +71,16 @@
             "title": "允许切换主题模式",
             "desc": "允许切换主题模式",
             "type": "radio",
-            "default": "1",
+            "default": "N",
             "options": [
-              0,
-              1
+              {
+                "key": "Y",
+                "value": "允许"
+              },
+              {
+                "key": "N",
+                "value": "不允许"
+              }
             ]
           },
           {
@@ -103,21 +109,29 @@
             "title": "禁用Gutenberg编辑器",
             "desc": "禁用Gutenberg编辑器",
             "type": "radio",
-            "default": "0",
-            "options": [
-              0,
-              1
-            ]
+            "default": "N",
+            "options": [{
+              "key": "Y",
+              "value": "是"
+            }, {
+              "key": "N",
+              "value": "否"
+            }]
           },
           {
             "key": "hide_footer_wp_text",
             "title": "隐藏底部'感谢使用WordPress进行创作'和左上角标识",
             "desc": "隐藏底部'感谢使用WordPress进行创作'和左上角标识",
             "type": "radio",
-            "default": "0",
+            "default": "N",
             "options": [
-              0,
-              1
+              {
+                "key": "Y",
+                "value": "是"
+              }, {
+                "key": "N",
+                "value": "否"
+              }
             ]
           },
           {
@@ -125,10 +139,15 @@
             "title": "全站变灰（可供用于悼念日或其他事件变灰需求）",
             "desc": "全站变灰（可供用于悼念日或其他事件变灰需求）",
             "type": "radio",
-            "default": "0",
+            "default": "N",
             "options": [
-              0,
-              1
+              {
+                "key": "Y",
+                "value": "是"
+              }, {
+                "key": "N",
+                "value": "否"
+              }
             ]
           },
           {
@@ -136,10 +155,15 @@
             "title": "显示首页幻灯片",
             "desc": "显示首页幻灯片",
             "type": "radio",
-            "default": "1",
+            "default": "N",
             "options": [
-              0,
-              1
+              {
+                "key": "Y",
+                "value": "是"
+              }, {
+                "key": "N",
+                "value": "否"
+              }
             ]
           },
           {
@@ -152,12 +176,17 @@
           {
             "key": "login_protection",
             "title": "启用后台登录保护",
-            "desc": "启用后台登录保护",
+            "desc": "启用后则用'wp-login.php?{后台登录保护参数}={后台登录保护值}'的方式访问",
             "type": "radio",
-            "default": "1",
+            "default": "N",
             "options": [
-              0,
-              1
+              {
+                "key": "Y",
+                "value": "是"
+              }, {
+                "key": "N",
+                "value": "否"
+              }
             ]
           },
           {
@@ -188,10 +217,11 @@
             "desc": "启用缩略图延迟加载",
             "type": "radio",
             "default": "0",
-            "options": [
-              0,
-              1
-            ]
+            "options": [{
+              "label": "是", "value": "1"
+            }, {
+              "label": "否", "value": "0"
+            }]
           },
           {
             "key": "img_lazy_paged",
