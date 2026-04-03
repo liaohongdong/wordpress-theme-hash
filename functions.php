@@ -116,3 +116,9 @@ function print_all_wp_filter()
 // }
 // // 后台入队脚本的专用钩子：admin_enqueue_scripts
 // add_action('admin_enqueue_scripts', 'custom_admin_localize_scripts');
+
+// 禁止直接访问 .env
+if (strpos($_SERVER['REQUEST_URI'], '.env') !== false) {
+  header('HTTP/1.1 403 Forbidden');
+  exit;
+}

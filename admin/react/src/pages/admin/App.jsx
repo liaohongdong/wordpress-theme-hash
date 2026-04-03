@@ -1,8 +1,16 @@
 import './App.css'
 import './style.scss'
 import React from 'react'
-import { App, Button, Space, DatePicker, version, Tabs } from 'antd'
+import { App, Button, Space, DatePicker, version, Tabs, message } from 'antd'
 import Children from './components/Children'
+
+message.config({
+  top      : 100,
+  duration : 2,
+  maxCount : 3,
+  rtl      : true,
+  prefixCls: 'my-message',
+});
 
 const onChange = key => {
   console.log(key, 8);
