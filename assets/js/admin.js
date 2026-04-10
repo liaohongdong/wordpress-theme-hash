@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-  // console.log(window, 998, __params, $)
+  console.log(window, 998, __params, $)
   // $.ajax({
   //   url: __params.ajax_url,
   //   method: 'POST',
@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
   //     action: 'test_me',
   //     nonce: __params.test_me_nonce,
   //     // nonce: __params.ajaxNonce,
-  //     input: '哈哈哈',
+  //     input: '哈哈哈111',
   //   }
   // }).done(function (e) {
   //   console.log(e, 10);

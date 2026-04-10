@@ -3,6 +3,8 @@ if (!defined('ABSPATH')) {
   exit;
 }
 
+require_once __DIR__ . '/vendor/autoload.php';
+
 function custom_login_expiry_time($expiration)
 {
   return 30 * 24 * 60 * 60; // 24小时的秒数
@@ -14,6 +16,7 @@ if (function_exists('get_theme_file_path')) {
   require_once get_theme_file_path('/admin/admin.php');
   require_once get_theme_file_path('/admin/index.php');
   require_once get_theme_file_path('/admin/wp-ajax.php');
+  require_once get_theme_file_path('/admin/wp-ajax-r2-upload.php');
 }
 
 // /**

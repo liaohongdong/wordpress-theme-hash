@@ -1,13 +1,17 @@
 import { UploadOutlined } from '@ant-design/icons';
 import { Input, List, Radio, Divider, Typography, message, Upload, Button } from 'antd';
 import { genSuffPathByUploadFile } from '@/utils';
-import {
-  S3Client,
-  PutObjectCommand,
-  GetObjectCommand,
-  ListObjectsV2Command,
-  ListBucketsCommand,
-} from "@aws-sdk/client-s3";
+import request from '@/utils/request';
+// import axios from 'axios';
+import qs from 'qs';
+
+// import {
+//   S3Client,
+//   PutObjectCommand,
+//   GetObjectCommand,
+//   ListObjectsV2Command,
+//   ListBucketsCommand,
+// } from "@aws-sdk/client-s3";
 
 const GlobalSet = props => {
   const { item } = props
@@ -55,31 +59,34 @@ const GlobalSet = props => {
                     return true;
                   },
                   customRequest: async (options) => {
-                    const { file, onProgress, onSuccess, onError } = options;
-                    console.log(options, 444444, file)
+                    const { file, onSuccess, onError } = options;
                     const suffPath = genSuffPathByUploadFile(file);
-                    // console.log(file, 444, suffPath);
                     try {
-                      const s3Client = new S3Client({
-                        region: "auto",
-                        endpoint: "https://a3f2441ab2dcc5a7eb4c789098210e27.r2.cloudflarestorage.com",
-                        credentials: {
-                          accessKeyId: "3e66e7963eb4e385b710b31a0de9a4e1",
-                          secretAccessKey: "83d80ebccf090a708b6989e45b4eb3d5dfaf0f1a10984929b40e5f17502ddc7e"
-                        },
-                        // signer: { sign: async (req) => req },
-                        forcePathStyle: true,
-                        disableHostPrefix: true,
-                      });
-                      // const put = new PutObjectCommand({
-                      //   Bucket: "wordpress",
-                      //   Key: 'hh.txt',
-                      //   Body: '1122334',
-                      //   ContentType: file.type,
-                      // });
-                      // console.log(s3Client, 70, put);
-                      // await s3Client.send(put);
-                      // console.log(await s3Client.send(new ListBucketsCommand({})));
+                      // const formData = new FormData();
+                      // formData.append('action', 'r2_upload');
+                      // formData.append('nonce', __params.ajaxNonce);
+                      await request.post(__params.ajax_url, qs.stringify({
+                        action: 'r2_upload',
+                        nonce: __params.ajaxNonce,
+                      }))
+                      // const data = {
+                      //   action: 'r2_upload',
+                      //   nonce: __params.ajaxNonce,
+                      // };
+                      // const res = await axios.post(
+                      //   __params.ajax_url,
+                      //   qs.stringify(data),
+                      // );
+                      // $.ajax({
+                      //   url: __params.ajax_url,
+                      //   method: 'POST',
+                      //   dataType: 'json',
+                      //   data: {
+                      //     action: 'r2_upload',
+                      //     nonce: __params.ajaxNonce,
+                      //     input: '哈哈哈gaga',
+                      //   }
+                      // })
                       message.success('上传成功');
                       onSuccess({ url: suffPath }); // 通知组件上传完成
                     } catch (error) {
@@ -96,7 +103,6 @@ const GlobalSet = props => {
                   },
                 }
                 return <>
-                  {/* :global(.ant-upload-select) { */}
                   <style>{`
                     .ant-upload-select {
                       width: 100% !important;

@@ -26,7 +26,7 @@ if (!function_exists('_js_parameters')) {
       'is_logged_in' => is_user_logged_in(),
       'user_info' => is_user_logged_in() ? wp_get_current_user() : null,
       'test_me_nonce' => wp_create_nonce('test_me'),
-      'ajaxNonce' => wp_create_nonce('custom_ajax_nonce'),
+      'ajaxNonce' => wp_create_nonce('ajax'),
     );
     if (isset($registered_settings[Admin::get_admin_options_name()])) {
       $data = get_option(Admin::get_admin_options_name());
@@ -51,6 +51,7 @@ if (!function_exists('test_me_callback')) {
   {
     // 安全验证：验证 nonce 令牌（必须！防止恶意请求）
     if (!check_ajax_referer('test_me', 'nonce', false)) {
+    // if (!check_ajax_referer('custom_ajax', 'nonce', false)) {
       wp_send_json(array(
         'success' => false,
         'data' => '',
