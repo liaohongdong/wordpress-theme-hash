@@ -1,9 +1,11 @@
 <?php
 
-$env = parse_ini_file(get_theme_file_path('.env'));
-define('endpoint', $env['endpoint']);
-define('accessKeyId', $env['accessKeyId']);
-define('secretAccessKey', $env['secretAccessKey']);
+
+
+// $env = parse_ini_file(get_theme_file_path('.env'));
+// define('endpoint', $env['endpoint']);
+// define('accessKeyId', $env['accessKeyId']);
+// define('secretAccessKey', $env['secretAccessKey']);
 
 # 打印上面三个变量
 
@@ -11,7 +13,7 @@ require_once get_theme_file_path('/core/CloudflareR2.php');
 
 use Aws\Exception\AwsException;
 
-if (!function_exists('r2_upload_·callback')) {
+if (!function_exists('r2_upload_callback')) {
   function r2_upload_callback()
   {
     if (!check_ajax_referer('ajax', 'nonce', false)) {
@@ -23,7 +25,8 @@ if (!function_exists('r2_upload_·callback')) {
     }
     try {
       var_dump($_POST);
-      // $r2 = new CloudflareR2();
+      var_dump($_FILES['file']);
+      $r2 = new CloudflareR2();
       // $r2->getPresignedUploadUrl();
       // $this->s3Client->putObject([
       //   'Bucket' => $this->bucket,
@@ -40,7 +43,7 @@ if (!function_exists('r2_upload_·callback')) {
       try {
         $response['success'] = true;
         $response['data'] = 'aaaaa1';
-        $response['message'] = 'successMsg';
+        $response['message'] = '上传成功';
       } catch (Exception $e) {
         $response['message'] = $e->getMessage();
       }

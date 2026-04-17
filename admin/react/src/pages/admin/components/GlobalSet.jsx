@@ -61,15 +61,30 @@ const GlobalSet = props => {
                   customRequest: async (options) => {
                     const { file, onSuccess, onError } = options;
                     const suffPath = genSuffPathByUploadFile(file);
+                    console.log(file, 64);
                     try {
                       // const formData = new FormData();
                       // formData.append('action', 'r2_upload');
                       // formData.append('nonce', __params.ajaxNonce);
-                      await request.post(__params.ajax_url, qs.stringify({
+                      // formData.append('file', file);
+                      // formData.append('suffPath', suffPath);
+                      // await request.post(__params.ajax_url, formData, {
+                      //   headers: {
+                      //     'Content-Type': 'multipart/form-data'
+                      //   }
+                      // })
+
+                      await request.post(__params.ajax_url, {
                         action: 'r2_upload',
                         nonce: __params.ajaxNonce,
-                      }))
-                      // const data = {
+                        file,
+                        suffPath,
+                      }, {
+                        headers: {
+                          'Content-Type': 'multipart/form-data'
+                        }
+                      })
+                    // const data = {
                       //   action: 'r2_upload',
                       //   nonce: __params.ajaxNonce,
                       // };
