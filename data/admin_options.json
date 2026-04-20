@@ -88,6 +88,7 @@
             "title": "高亮模式下LOGO",
             "desc": "比例：500*125，请尽量选择png无底色图片",
             "type": "upload",
+            "fileName": "",
             "default": ""
           },
           {
@@ -95,6 +96,7 @@
             "title": "暗黑模式下LOGO",
             "desc": "比例：500*125，请尽量选择png无底色图片",
             "type": "upload",
+            "fileName": "",
             "default": ""
           },
           {
@@ -102,6 +104,7 @@
             "title": "网站Favicon",
             "desc": "比例：1:1",
             "type": "upload",
+            "fileName": "",
             "default": ""
           },
           {
@@ -239,6 +242,7 @@
             "title": "留言头像",
             "desc": "留言头像",
             "type": "upload",
+            "fileName": "",
             "default": ""
           },
           {
@@ -378,6 +382,7 @@
             "title": "文章赞赏支付宝二维码",
             "desc": "文章赞赏支付宝二维码",
             "type": "upload",
+            "fileName": "",
             "default": ""
           },
           {
@@ -385,6 +390,7 @@
             "title": "文章赞赏微信二维码",
             "desc": "文章赞赏微信二维码",
             "type": "upload",
+            "fileName": "",
             "default": ""
           }
         ]

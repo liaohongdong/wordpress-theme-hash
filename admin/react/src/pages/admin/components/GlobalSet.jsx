@@ -2,7 +2,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import { Input, List, Radio, Divider, Typography, message, Upload, Button } from 'antd';
 import { genSuffPathByUploadFile } from '@/utils';
 import request from '@/utils/request';
-// import axios from 'axios';
+import axios from 'axios';
 import qs from 'qs';
 
 // import {
@@ -73,25 +73,17 @@ const GlobalSet = props => {
                       //     'Content-Type': 'multipart/form-data'
                       //   }
                       // })
-
-                      await request.post(__params.ajax_url, {
-                        action: 'r2_upload',
-                        nonce: __params.ajaxNonce,
-                        file,
-                        suffPath,
-                      }, {
-                        headers: {
-                          'Content-Type': 'multipart/form-data'
-                        }
-                      })
-                    // const data = {
+                      // 后端上传
+                      // await request.post(__params.ajax_url, {
                       //   action: 'r2_upload',
                       //   nonce: __params.ajaxNonce,
-                      // };
-                      // const res = await axios.post(
-                      //   __params.ajax_url,
-                      //   qs.stringify(data),
-                      // );
+                      //   file,
+                      //   suffPath,
+                      // }, {
+                      //   headers: {
+                      //     'Content-Type': 'multipart/form-data'
+                      //   }
+                      // })
                       // $.ajax({
                       //   url: __params.ajax_url,
                       //   method: 'POST',
@@ -102,8 +94,34 @@ const GlobalSet = props => {
                       //     input: '哈哈哈gaga',
                       //   }
                       // })
-                      message.success('上传成功');
-                      onSuccess({ url: suffPath }); // 通知组件上传完成
+                      // 前端上传
+                      const res = await request.post(
+                        __params.ajax_url,
+                        qs.stringify({
+                          action: 'r2_upload',
+                          nonce: __params.ajaxNonce,
+                          suffPath,
+                        }),
+                      );
+                      // const uploadRes = await fetch(res.data.upload_url, {
+                      //   method: 'PUT',
+                      //   body: file,
+                      //   headers: { 'Content-Type': file.type }
+                      // })
+                      const uploadRes = await axios({
+                        method: 'PUT',
+                        url: res.data.upload_url,
+                        data: file,
+                        headers: { 'Content-Type': file.type }
+                      })
+                      // if (uploadRes.ok) {
+                      if (uploadRes.status === 200) {
+                        message.success('上传成功');
+                        onSuccess({ url: suffPath }); // 通知组件上传完成
+                      } else {
+                        message.error('上传失败');
+                        onError('请检查上传路径');
+                      }
                     } catch (error) {
                       message.error('上传失败');
                       onError(error);

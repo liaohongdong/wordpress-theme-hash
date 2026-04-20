@@ -24,27 +24,36 @@ if (!function_exists('r2_upload_callback')) {
       ));
     }
     try {
-      var_dump($_POST);
-      var_dump($_FILES['file']);
-      $r2 = new CloudflareR2();
-      // $r2->getPresignedUploadUrl();
-      // $this->s3Client->putObject([
-      //   'Bucket' => $this->bucket,
-      //   'Key' => $savePath,
-      //   'SourceFile' => $localPath,
-      //   'ContentType' => $contentType ?: 'application/octet-stream',
-      // ]);
-      // 初始化响应数据
-      $response = array(
-        'success' => false,
-        'data' => '',
-        'message' => ''
-      );
+      $file = $_FILES['file'];
+      $localTempPath = $file['tmp_name']; // 临时文件路径（必须用这个）
+      $savePath = $_POST['suffPath'];
       try {
+        $r2 = new CloudflareR2();
+        // 后台上传
+        // $uploadResult = $r2->upload($localTempPath, $savePath);
+        // // 初始化响应数据
+        // $response = array(
+        //   'success' => false,
+        //   'data' => '',
+        //   'message' => ''
+        // );
+        // if (!$_POST['suffPath']) {
+        //   $response['success'] = false;
+        //   $response['message'] = 'suffPath 不能为空';
+        // }
+        // if ($uploadResult) {
+        //   $response['success'] = true;
+        //   $response['data'] = $r2->getPresignedDownloadUrl($savePath);
+        //   $response['message'] = '上传成功';
+        // }
+        // 前端上传
+        $uploadUrl = $r2->getPresignedUploadUrl($savePath, 600);
         $response['success'] = true;
-        $response['data'] = 'aaaaa1';
-        $response['message'] = '上传成功';
+        $response['data']['upload_url'] = $uploadUrl; // 前端用这个URL上传
+        $response['data']['save_path'] = $savePath; // 保存到数据库的文件路径
+        $response['message'] = '获取上传地址成功';
       } catch (Exception $e) {
+        $response['success'] = false;
         $response['message'] = $e->getMessage();
       }
       wp_send_json($response);
