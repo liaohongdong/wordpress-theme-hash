@@ -17,7 +17,7 @@ const onChange = key => {
 };
 
 const _App = () => {
-  console.log(window, 998123, window.__params, window.$);
+  // console.log(window, 998123, window.__params, window.$);
   const items = [];
   if (window.__params?.admin_options?.tab_options && window.__params.admin_options.tab_options?.length) {
     window.__params.admin_options.tab_options.forEach(e => {

@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-  console.log(window, 998, __params, $)
+  // console.log(window, 998, __params, $)
   // $.ajax({
   //   url: __params.ajax_url,
   //   method: 'POST',

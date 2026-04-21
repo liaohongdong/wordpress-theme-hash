@@ -1,3 +1,4 @@
+import { useRef, useReducer, useState } from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Input, List, Radio, Divider, Typography, message, Upload, Button } from 'antd';
 import { genSuffPathByUploadFile } from '@/utils';
@@ -5,18 +6,18 @@ import request from '@/utils/request';
 import axios from 'axios';
 import qs from 'qs';
 
-// import {
-//   S3Client,
-//   PutObjectCommand,
-//   GetObjectCommand,
-//   ListObjectsV2Command,
-//   ListBucketsCommand,
-// } from "@aws-sdk/client-s3";
+function tasksItem (tasks, action) {
+
+}
 
 const GlobalSet = props => {
   const { item } = props
   const { global_set } = item
   const { item: _item } = global_set
+
+  // const [openFileDialogOnClick, setOpenFileDialogOnClick] = useState(false);
+  const [tasks, dispatch] = useReducer();
+  
   // 斐波那契数列
   const dom = (
     <>
@@ -50,13 +51,42 @@ const GlobalSet = props => {
                 formData.append('file', item.default);
                 const props = {
                   name: 'file',
+                  openFileDialogOnClick: false,
                   // action: 'https://a3f2441ab2dcc5a7eb4c789098210e27.r2.cloudflarestorage.com/',
                   // data: formData,
                   showUploadList: false,
                   beforeUpload: (file) => {
+                    let LIMIT_WIDTH = item.width;   // 最大宽度
+                    let LIMIT_HEIGHT = item.height;  // 最大高度
+                    let LIMIT_SIZE = item.size * 1024 * 1024; // 2MB
+                    if (!item?.allow?.some(type => file.type.includes(type))) {
+                      message.error(`请上传${item.allow.join('、')}格式的文件`);
+                      return Promise.reject(false);
+                    }
+                    if (file.size > LIMIT_SIZE) {
+                      message.error(`文件大小不能超过 ${item.size}MB`);
+                      return Promise.reject(false);
+                    }
+                    return new Promise((resolve, reject) => {
+                      const img = new Image();
+                      img.src = URL.createObjectURL(file);
+                      img.onload = () => {
+                        const { width, height } = img;
+                        if (width !== LIMIT_WIDTH && height !== LIMIT_HEIGHT) {
+                          message.error(`图片尺寸必须为： ${LIMIT_WIDTH}×${LIMIT_HEIGHT}尺寸！当前：${width}×${height}`);
+                          reject(false); // 拦截上传
+                          return;
+                        }
+                        resolve(true);   
+                      }
+                      img.onerror = () => {
+                        message.error("图片加载失败，请重新上传");
+                        reject(false);
+                      };
+                    })
                     // return Promise.reject(new Error('上传失败'));
                     // return false;
-                    return true;
+                    // return true;
                   },
                   customRequest: async (options) => {
                     const { file, onSuccess, onError } = options;
@@ -135,16 +165,17 @@ const GlobalSet = props => {
                     }
                   },
                 }
+                const uploadRef = useRef(null)
                 return <>
                   <style>{`
                     .ant-upload-select {
                       width: 100% !important;
                     }
                   `}</style>
-                  <Upload {...props} className='tw:w-full'>
+                  <Upload {...props} ref={uploadRef} className='tw:!w-[30%]'>
                     <div className="tw:flex tw:items-center tw:gap-2">
-                      <Input value={item.default} className='tw:!w-[30%]' />
-                      <Button icon={<UploadOutlined />}></Button>
+                      <Input value={item.default} className='tw:w-full' />
+                      <Button icon={<UploadOutlined />} onClick={() => uploadRef.current.nativeElement?.querySelector('input[type="file"]')?.click() }></Button>
                     </div>
                   </Upload>
                 </>;

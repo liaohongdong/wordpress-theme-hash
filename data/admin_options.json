@@ -87,6 +87,10 @@
             "key": "light_logo",
             "title": "高亮模式下LOGO",
             "desc": "比例：500*125，请尽量选择png无底色图片",
+            "width": 500,
+            "height": 125,
+            "allow": ["png", "jpg", "jpeg"],
+            "size": 2,
             "type": "upload",
             "fileName": "",
             "default": ""
@@ -95,6 +99,10 @@
             "key": "dark_logo",
             "title": "暗黑模式下LOGO",
             "desc": "比例：500*125，请尽量选择png无底色图片",
+            "width": 500,
+            "height": 125,
+            "allow": ["png", "jpg", "jpeg"],
+            "size": 2,
             "type": "upload",
             "fileName": "",
             "default": ""
@@ -103,6 +111,10 @@
             "key": "favicon",
             "title": "网站Favicon",
             "desc": "比例：1:1",
+            "width": 32,
+            "height": 32,
+            "allow": ["ico", "png", "svg"],
+            "size": 2,
             "type": "upload",
             "fileName": "",
             "default": ""
