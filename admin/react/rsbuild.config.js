@@ -3,6 +3,7 @@ import { defineConfig, defaultAllowedOrigins } from '@rsbuild/core';
 import { pluginBabel } from '@rsbuild/plugin-babel';
 import { pluginReact } from '@rsbuild/plugin-react';
 import { pluginSass } from '@rsbuild/plugin-sass';
+import AutoImport from 'unplugin-auto-import/rspack';
 
 import { pluginAfterBuild } from './plugins/after-build';
 
@@ -36,10 +37,48 @@ export default defineConfig({
   },
   tools: {
     // 与底层工具有关的选项
+    rspack: {
+      plugins: [
+        // 自动导入 React Hooks
+        AutoImport({
+          imports: ['react'],
+          resolvers: [
+            (name) => {
+              // if (name.startsWith('Ant')) {
+              //   // 组件名格式：AntButton → Button
+              //   const componentName = name.slice(3);
+              //   return {
+              //     name: componentName,
+              //     from: 'antd',
+              //   };
+              // }
+              // 首字母大写的组件名，直接从 antd 导入
+              const antdComponents = new Set([
+                'Button', 'Input', 'Form', 'Table', 'Modal', 'Card',
+                'Space', 'Select', 'DatePicker', 'Drawer', 'Message',
+                'Typography', 'Upload', 'Radio', 'List', 'Checkbox',
+                'Tabs', 'Collapse', 'Tooltip', 'Popconfirm', 'Dropdown',
+                'Menu', 'Breadcrumb', 'Pagination', 'Tag', 'Badge',
+                'Avatar', 'Divider', 'Empty', 'Spin', 'Alert', 'Result'
+              ]);
+              if (antdComponents.has(name)) {
+                return { name, from: 'antd' };
+              }
+            },
+          ],
+          // 生成类型声明文件（解决 TS 报错）
+          dts: './auto-imports.d.ts',
+        }),
+      ],
+    },
   },
   output: {
     // 与构建产物有关的选项
     assetPrefix: `<?php echo get_stylesheet_directory_uri() . '/admin/react/dist' ?>`,
+    sourceMap: {
+      js: 'source-map',
+      css: true,
+    },
   },
   resolve: {
     // 与模块解析相关的选项
@@ -55,6 +94,19 @@ export default defineConfig({
       admin: './src/pages/admin/index.jsx',
       options: './src/pages/options/index.jsx',
     },
+    transformImport: [
+      {
+        libraryName: 'antd',
+        libraryDirectory: 'es', // 使用 ES module
+        // style: 'css', // 自动导入对应 CSS（v4/v5 通用）
+        // style: true, // 若需导入 less 源码（需配置 less 编译）
+      },
+      {
+        libraryName: '@ant-design/icons',
+        libraryDirectory: 'es/icons',
+        camelToDashComponentName: false,
+      },
+    ],
   },
   server: {
     // 与 Rsbuild 服务器有关的选项
