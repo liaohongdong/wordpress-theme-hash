@@ -19,6 +19,7 @@ if (!function_exists('_js_parameters')) {
     var_dump('js_parameters33');
     $registered_settings = get_registered_settings(); // 获取所有已注册的合法设置项
     $params = array(
+      'custom_domain' => customDomain,
       'ajax_url' => admin_url('admin-ajax.php'),
       'theme_url' => get_template_directory_uri(),
       'site_url' => get_site_url(),

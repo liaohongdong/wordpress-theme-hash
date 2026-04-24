@@ -1,10 +1,13 @@
-// import { useRef, useReducer, useState } from 'react'
+// import { useRef, useReducer, useState, useContext } from 'react'
 import { UploadOutlined } from '@ant-design/icons'
 // import { Input, List, Radio, Divider, Typography, message, Upload, Button, Spin } from 'antd'
 import { genSuffPathByUploadFile } from '@/utils'
 import request from '@/utils/request'
 import axios from 'axios'
 import qs from 'qs'
+
+import TabContext from './TabContext'
+import { message } from 'antd'
 
 const tasksReducer = (tasks, action) => {
   switch (action.type) {
@@ -38,40 +41,38 @@ const GlobalSet = props => {
   }
   const dom = (
     <>
-      {JSON.stringify(tasks)}
-      <a-spin spinning={true}>
-        <List
-          bordered
-          dataSource={tasks}
-          renderItem={item => (
-            <List.Item
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'start'
-              }}
-            >
-              <div className="tw:text-lg tw:font-bold">
-                <Typography.Text level={5}>{item.title}</Typography.Text>
-              </div>
+      {/* {JSON.stringify(tasks)} */}
+      <List
+        bordered
+        dataSource={tasks}
+        renderItem={item => (
+          <List.Item
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'start'
+            }}
+          >
+            <div className="tw:text-lg tw:font-bold">
+              <Typography.Text level={5}>{item.title}</Typography.Text>
+            </div>
 
-              {item.type === 'radio' && (
-                <Radio.Group value={item.default} onChange={e => handleChange(item.key, e.target.value)} options={item.options.map(option => ({ value: option.key, label: option.value }))} />
-              )}
+            {item.type === 'radio' && (
+              <Radio.Group value={item.default} onChange={e => handleChange(item.key, e.target.value)} options={item.options.map(option => ({ value: option.key, label: option.value }))} />
+            )}
 
-              {item.type === 'text' && <Input value={item.default} className="tw:!w-[30%]" onChange={e => handleChange(item.key, e.target.value)} />}
+            {item.type === 'text' && <Input value={item.default} className="tw:!w-[30%]" onChange={e => handleChange(item.key, e.target.value)} />}
 
-              {item.type === 'upload' && <UploadComponent item={item} onUploadSuccess={url => handleChange(item.key, url)} />}
+            {item.type === 'upload' && <UploadComponent item={item} onUploadSuccess={url => handleChange(item.key, url)} />}
 
-              <div>
-                <Typography.Text level={5} style={{ fontSize: '12px', color: '#6b7280' }}>
-                  {item.desc}
-                </Typography.Text>
-              </div>
-            </List.Item>
-          )}
-        />
-      </a-spin>
+            <div>
+              <Typography.Text level={5} style={{ fontSize: '12px', color: '#6b7280' }}>
+                {item.desc}
+              </Typography.Text>
+            </div>
+          </List.Item>
+        )}
+      />
     </>
   )
   return dom
@@ -79,11 +80,10 @@ const GlobalSet = props => {
 
 // ✅ 抽离独立上传组件（关键修复）
 function UploadComponent({ item, onUploadSuccess }) {
-  const uploadRef = useRef(null)
-  // const [fileList, setFileList] = useState([]);
+  const { setSpinning } = useContext(TabContext);
+  const uploadRef = useRef(null);
   const uploadProps = {
     name: 'file',
-    // fileList,
     openFileDialogOnClick: false,
     showUploadList: false,
     beforeUpload: file => {
@@ -156,7 +156,7 @@ function UploadComponent({ item, onUploadSuccess }) {
         //   }
         // })
         // 前端上传
-
+        setSpinning(true);
         const res = await request.post(
           __params.ajax_url,
           qs.stringify({
@@ -165,21 +165,25 @@ function UploadComponent({ item, onUploadSuccess }) {
             suffPath
           })
         )
+        setSpinning(false);
         // const uploadRes = await fetch(res.data.upload_url, {
         //   method: 'PUT',
         //   body: file,
         //   headers: { 'Content-Type': file.type }
         // })
+        setSpinning(true);
         const uploadRes = await axios({
           method: 'PUT',
           url: res.data.upload_url,
           data: file,
           headers: { 'Content-Type': file.type }
         })
+        setSpinning(false);
+        console.log(uploadRes, 181);
         // if (uploadRes.ok) {
         if (uploadRes.status === 200) {
-          message.success('上传成功rrr')
-          onSuccess({ url: suffPath }, file) // 通知组件上传完成
+          message.destroy()
+          onSuccess({ url: __params.custom_domain + suffPath }, file) // 通知组件上传完成
         } else {
           message.error('上传失败')
           onError('请检查上传路径')
@@ -190,11 +194,10 @@ function UploadComponent({ item, onUploadSuccess }) {
       }
     },
     onChange: info => {
-      console.log('onChange =', info.file.status)
+      console.log('onChange =', info)
       if (info.file.status === 'done') {
-        console.log('✅ done 触发成功！')
-        // setFileList([]);
         onUploadSuccess(info.file.response?.url)
+        message.destroy()
         message.success('上传成功')
       }
       if (info.file.status === 'error') {

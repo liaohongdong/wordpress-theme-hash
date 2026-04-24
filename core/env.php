@@ -6,4 +6,4 @@ $env = parse_ini_file(get_theme_file_path('/.env'));
 define('endpoint',        $env['endpoint']);
 define('accessKeyId',     $env['accessKeyId']);
 define('secretAccessKey', $env['secretAccessKey']);
-
+define('customDomain',    $env['customDomain']);

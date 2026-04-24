@@ -1,14 +1,4 @@
 <?php
-
-
-
-// $env = parse_ini_file(get_theme_file_path('.env'));
-// define('endpoint', $env['endpoint']);
-// define('accessKeyId', $env['accessKeyId']);
-// define('secretAccessKey', $env['secretAccessKey']);
-
-# 打印上面三个变量
-
 require_once get_theme_file_path('/core/CloudflareR2.php');
 
 use Aws\Exception\AwsException;

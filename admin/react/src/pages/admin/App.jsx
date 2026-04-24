@@ -1,7 +1,8 @@
 import './App.css'
 import './style.scss'
-import React from 'react'
-import { App, Button, Space, DatePicker, version, Tabs, message } from 'antd'
+// import React from 'react'
+// import { App, Tabs, message } from 'antd'
+import TabContext from './components/TabContext';
 import Children from './components/Children'
 
 message.config({
@@ -31,10 +32,16 @@ const _App = () => {
     })
     
   }
+  const [spinning, setSpinning] = useState(false);
   return (
     <App className="wrapper">
-      {/* <h1 className="tw:text-[50px]! tw:font-bold tw:underline">antd version: {version}</h1> */}
-      <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+      a{spinning}a
+      <TabContext.Provider value={{ spinning, setSpinning }}>
+        {/* <h1 className="tw:text-[50px]! tw:font-bold tw:underline">antd version: {version}</h1> */}
+        <Spin spinning={spinning}>
+          <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+        </Spin>
+      </TabContext.Provider>
     </App>
   )
 }
