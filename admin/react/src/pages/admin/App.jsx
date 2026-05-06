@@ -35,7 +35,6 @@ const _App = () => {
   const [spinning, setSpinning] = useState(false);
   return (
     <App className="wrapper">
-      a{spinning}a
       <TabContext.Provider value={{ spinning, setSpinning }}>
         {/* <h1 className="tw:text-[50px]! tw:font-bold tw:underline">antd version: {version}</h1> */}
         <Spin spinning={spinning}>

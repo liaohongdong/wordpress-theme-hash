@@ -19,16 +19,16 @@
             "default": "blog",
             "options": [
               {
-                "key": "blog",
-                "value": "博客风格"
+                "label": "博客风格",
+                "value": "blog"
               },
               {
-                "key": "cms",
-                "value": "CMS风格"
+                "label": "CMS风格",
+                "value": "cms"
               },
               {
-                "key": "company",
-                "value": "企业风格"
+                "label": "企业风格",
+                "value": "company"
               }
             ]
           },
@@ -40,12 +40,12 @@
             "default": "list",
             "options": [
               {
-                "key": "list",
-                "value": "列表式"
+                "label": "列表式",
+                "value": "list"
               },
               {
-                "key": "card",
-                "value": "卡片式"
+                "label": "卡片式",
+                "value": "card"
               }
             ]
           },
@@ -57,12 +57,12 @@
             "default": "light",
             "options": [
               {
-                "key": "light",
-                "value": "高亮模式"
+                "label": "高亮模式",
+                "value": "light"
               },
               {
-                "key": "dark",
-                "value": "暗黑模式"
+                "label": "暗黑模式",
+                "value": "dark"
               }
             ]
           },
@@ -74,12 +74,12 @@
             "default": "N",
             "options": [
               {
-                "key": "Y",
-                "value": "允许"
+                "label": "允许",
+                "value": "Y"
               },
               {
-                "key": "N",
-                "value": "不允许"
+                "label": "不允许",
+                "value": "N"
               }
             ]
           },
@@ -125,13 +125,16 @@
             "desc": "禁用Gutenberg编辑器",
             "type": "radio",
             "default": "N",
-            "options": [{
-              "key": "Y",
-              "value": "是"
-            }, {
-              "key": "N",
-              "value": "否"
-            }]
+            "options": [
+              {
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
+              }
+            ]
           },
           {
             "key": "hide_footer_wp_text",
@@ -141,11 +144,12 @@
             "default": "N",
             "options": [
               {
-                "key": "Y",
-                "value": "是"
-              }, {
-                "key": "N",
-                "value": "否"
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
               }
             ]
           },
@@ -157,11 +161,12 @@
             "default": "N",
             "options": [
               {
-                "key": "Y",
-                "value": "是"
-              }, {
-                "key": "N",
-                "value": "否"
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
               }
             ]
           },
@@ -173,11 +178,12 @@
             "default": "N",
             "options": [
               {
-                "key": "Y",
-                "value": "是"
-              }, {
-                "key": "N",
-                "value": "否"
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
               }
             ]
           },
@@ -196,11 +202,12 @@
             "default": "N",
             "options": [
               {
-                "key": "Y",
-                "value": "是"
-              }, {
-                "key": "N",
-                "value": "否"
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
               }
             ]
           },
@@ -231,28 +238,43 @@
             "title": "启用缩略图延迟加载",
             "desc": "启用缩略图延迟加载",
             "type": "radio",
-            "default": "0",
-            "options": [{
-              "label": "是", "value": "1"
-            }, {
-              "label": "否", "value": "0"
-            }]
+            "default": "N",
+            "options": [
+              {
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
+              }
+            ]
           },
           {
             "key": "img_lazy_paged",
             "title": "启用正文图片延迟加载",
             "desc": "启用正文图片延迟加载",
             "type": "radio",
-            "default": "0",
+            "default": "N",
             "options": [
-              0,
-              1
+              {
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
+              }
             ]
           },
           {
             "key": "comment_avatar",
             "title": "留言头像",
-            "desc": "留言头像",
+            "desc": "比例：512*512，请尽量选择png无底色图片",
+            "width": 512,
+            "height": 512,
+            "allow": ["png", "jpg", "jpeg"],
+            "size": 2,
             "type": "upload",
             "fileName": "",
             "default": ""
@@ -262,10 +284,16 @@
             "title": "评论Ajax翻页",
             "desc": "评论Ajax翻页",
             "type": "radio",
-            "default": "0",
+            "default": "Y",
             "options": [
-              0,
-              1
+              {
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
+              }
             ]
           },
           {
@@ -273,10 +301,16 @@
             "title": "显示评论等级",
             "desc": "显示评论等级",
             "type": "radio",
-            "default": "0",
+            "default": "Y",
             "options": [
-              0,
-              1
+              {
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
+              }
             ]
           },
           {
@@ -284,10 +318,16 @@
             "title": "评论回复邮件通知",
             "desc": "评论回复邮件通知",
             "type": "radio",
-            "default": "0",
+            "default": "Y",
             "options": [
-              0,
-              1
+              {
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
+              }
             ]
           },
           {
@@ -295,10 +335,16 @@
             "title": "新标签页打开内容",
             "desc": "新标签页打开内容",
             "type": "radio",
-            "default": "0",
+            "default": "Y",
             "options": [
-              0,
-              1
+              {
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
+              }
             ]
           },
           {
@@ -306,10 +352,16 @@
             "title": "页面无刷新加载",
             "desc": "开启（新标签页打开的链接除外）",
             "type": "radio",
-            "default": "1",
+            "default": "Y",
             "options": [
-              0,
-              1
+              {
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
+              }
             ]
           },
           {
@@ -317,10 +369,16 @@
             "title": "异步浏览量统计",
             "desc": "开启（此选项为开启缓存后浏览量不自增问题解决方案）",
             "type": "radio",
-            "default": "0",
+            "default": "Y",
             "options": [
-              0,
-              1
+              {
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
+              }
             ]
           },
           {
@@ -328,10 +386,16 @@
             "title": "页面模块载入动画",
             "desc": "页面模块载入动画",
             "type": "radio",
-            "default": "0",
+            "default": "Y",
             "options": [
-              0,
-              1
+              {
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
+              }
             ]
           },
           {
@@ -339,10 +403,16 @@
             "title": "评论内容显示@",
             "desc": "评论内容显示@",
             "type": "radio",
-            "default": "0",
+            "default": "Y",
             "options": [
-              0,
-              1
+              {
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
+              }
             ]
           },
           {
@@ -350,10 +420,16 @@
             "title": "显示正文版权说明",
             "desc": "显示正文版权说明",
             "type": "radio",
-            "default": "1",
+            "default": "Y",
             "options": [
-              0,
-              1
+              {
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
+              }
             ]
           },
           {
@@ -361,10 +437,16 @@
             "title": "显示正文底部相关推荐",
             "desc": "显示正文底部相关推荐",
             "type": "radio",
-            "default": "0",
+            "default": "Y",
             "options": [
-              0,
-              1
+              {
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
+              }
             ]
           },
           {
@@ -372,10 +454,16 @@
             "title": "友情链接页面",
             "desc": "友情链接页面",
             "type": "radio",
-            "default": "0",
+            "default": "Y",
             "options": [
-              0,
-              1
+              {
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
+              }
             ]
           },
           {
@@ -383,16 +471,26 @@
             "title": "文章赞赏",
             "desc": "文章赞赏",
             "type": "radio",
-            "default": "0",
+            "default": "Y",
             "options": [
-              0,
-              1
+              {
+                "label": "是",
+                "value": "Y"
+              },
+              {
+                "label": "否",
+                "value": "N"
+              }
             ]
           },
           {
             "key": "post_reward_alipay",
             "title": "文章赞赏支付宝二维码",
-            "desc": "文章赞赏支付宝二维码",
+            "desc": "比例：512*512，请尽量选择png无底色图片",
+            "width": 512,
+            "height": 512,
+            "allow": ["png", "jpg", "jpeg"],
+            "size": 2,
             "type": "upload",
             "fileName": "",
             "default": ""
@@ -400,7 +498,11 @@
           {
             "key": "post_reward_wx",
             "title": "文章赞赏微信二维码",
-            "desc": "文章赞赏微信二维码",
+            "desc": "比例：512*512，请尽量选择png无底色图片",
+            "width": 512,
+            "height": 512,
+            "allow": ["png", "jpg", "jpeg"],
+            "size": 2,
             "type": "upload",
             "fileName": "",
             "default": ""

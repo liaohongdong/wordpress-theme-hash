@@ -12,3 +12,16 @@ export const genSuffPathByUploadFile = (file) => {
   // 4. 最终路径（严格格式）
   return `wordpress/${year}/${month}/${md5Str}.${ext}`;
 }
+
+export const tasksReducer = (tasks, action) => {
+  switch (action.type) {
+    case 'added':
+      return [...tasks, ...action.payload]
+    case 'changed':
+      return tasks.map(t => (t.key === action.payload.key ? action.payload : t))
+    case 'deleted':
+      return tasks.filter(t => t.key !== action.payload.key)
+    default:
+      throw new Error('error')
+  }
+}

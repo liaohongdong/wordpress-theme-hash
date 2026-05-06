@@ -1,26 +1,13 @@
 // import { useRef, useReducer, useState, useContext } from 'react'
 import { UploadOutlined } from '@ant-design/icons'
 // import { Input, List, Radio, Divider, Typography, message, Upload, Button, Spin } from 'antd'
-import { genSuffPathByUploadFile } from '@/utils'
+import { genSuffPathByUploadFile, tasksReducer } from '@/utils'
 import request from '@/utils/request'
 import axios from 'axios'
 import qs from 'qs'
 
 import TabContext from './TabContext'
 import { message } from 'antd'
-
-const tasksReducer = (tasks, action) => {
-  switch (action.type) {
-    case 'added':
-      return [...tasks, ...action.payload]
-    case 'changed':
-      return tasks.map(t => (t.key === action.payload.key ? action.payload : t))
-    case 'deleted':
-      return tasks.filter(t => t.key !== action.payload.key)
-    default:
-      throw new Error('error')
-  }
-}
 
 const GlobalSet = props => {
   const { item } = props
@@ -58,7 +45,7 @@ const GlobalSet = props => {
             </div>
 
             {item.type === 'radio' && (
-              <Radio.Group value={item.default} onChange={e => handleChange(item.key, e.target.value)} options={item.options.map(option => ({ value: option.key, label: option.value }))} />
+              <Radio.Group value={item.default} onChange={e => handleChange(item.key, e.target.value)} options={item.options.map(option => ({ value: option.value, label: option.label }))} />
             )}
 
             {item.type === 'text' && <Input value={item.default} className="tw:!w-[30%]" onChange={e => handleChange(item.key, e.target.value)} />}
@@ -78,7 +65,6 @@ const GlobalSet = props => {
   return dom
 }
 
-// ✅ 抽离独立上传组件（关键修复）
 function UploadComponent({ item, onUploadSuccess }) {
   const { setSpinning } = useContext(TabContext);
   const uploadRef = useRef(null);
