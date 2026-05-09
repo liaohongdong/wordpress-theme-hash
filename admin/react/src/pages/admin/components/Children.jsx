@@ -1,12 +1,4 @@
-import GlobalSet from './GlobalSet'
-import BasicSet from './BasicSet'
-import ThirdSet from './ThirdSet'
-import CompanyLayoutSet from './CompanyLayoutSet'
-import CmsLayoutSet from './CmsLayoutSet'
-import SeoSet from './SeoSet'
-import SmtpSet from './SmtpSet'
-import AntiBrushSet from './AntiBrushSet'
-import AdSet from './AdSet'
+import TabCompontent from './TabComponent'
 
 const Children = (props) => {
   const { item } = props;
@@ -14,31 +6,31 @@ const Children = (props) => {
   let content = <></>;
   switch (key) {
     case 'global_set':
-      content = <GlobalSet item={item} />
+      content = <TabCompontent item={item} data={item.global_set} />
       break;
     case 'basic_set':
-      content = <BasicSet item={item} />
+      content = <TabCompontent item={item} data={item.basic_set} />
       break;
     case 'third_set':
-      content = <ThirdSet item={item} />
+      content = <ThirdSet item={item} data={item.third_set} />
       break;
     case 'company_layout_set':
-      content = <CompanyLayoutSet item={item} />
+      content = <CompanyLayoutSet item={item} data={item.company_layout_set} />
       break;
     case 'cms_layout_set':
-      content = <CmsLayoutSet item={item} />
+      content = <CmsLayoutSet item={item} data={item.cms_layout_set} />
       break;
     case 'seo_set':
-      content = <SeoSet item={item} />
+      content = <SeoSet item={item} data={item.seo_set} />
       break;
     case 'smtp_set':
-      content = <SmtpSet item={item} />
+      content = <SmtpSet item={item} data={item.smtp_set} />
       break;
     case 'anti_brush_set':
-      content = <AntiBrushSet item={item} />
+      content = <AntiBrushSet item={item} data={item.anti_brush_set} />
       break;
     case 'ad_set':
-      content = <AdSet item={item} />
+      content = <AdSet item={item} data={item.ad_set} />
       break;
   }
 

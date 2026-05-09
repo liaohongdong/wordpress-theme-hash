@@ -6,552 +6,1086 @@
   "keywords": "wordpress,hash,theme",
   "themes": {},
   "tab_options": [
-    {
-      "global_set": {
-        "title": "全局设置",
-        "type": "group",
-        "item": [
-          {
-            "key": "index_mode",
-            "title": "首页布局",
-            "desc": "首页布局",
-            "type": "radio",
-            "default": "blog",
-            "options": [
-              {
-                "label": "博客风格",
-                "value": "blog"
-              },
-              {
-                "label": "CMS风格",
-                "value": "cms"
-              },
-              {
-                "label": "企业风格",
-                "value": "company"
-              }
-            ]
-          },
-          {
-            "key": "post_style",
-            "title": "文章样式",
-            "desc": "文章样式",
-            "type": "radio",
-            "default": "list",
-            "options": [
-              {
-                "label": "列表式",
-                "value": "list"
-              },
-              {
-                "label": "卡片式",
-                "value": "card"
-              }
-            ]
-          },
-          {
-            "key": "theme_mode",
-            "title": "默认主题模式",
-            "desc": "默认主题模式",
-            "type": "radio",
-            "default": "light",
-            "options": [
-              {
-                "label": "高亮模式",
-                "value": "light"
-              },
-              {
-                "label": "暗黑模式",
-                "value": "dark"
-              }
-            ]
-          },
-          {
-            "key": "change_theme",
-            "title": "允许切换主题模式",
-            "desc": "允许切换主题模式",
-            "type": "radio",
-            "default": "N",
-            "options": [
-              {
-                "label": "允许",
-                "value": "Y"
-              },
-              {
-                "label": "不允许",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "light_logo",
-            "title": "高亮模式下LOGO",
-            "desc": "比例：500*125，请尽量选择png无底色图片",
-            "width": 500,
-            "height": 125,
-            "allow": ["png", "jpg", "jpeg"],
-            "size": 2,
-            "type": "upload",
-            "fileName": "",
-            "default": ""
-          },
-          {
-            "key": "dark_logo",
-            "title": "暗黑模式下LOGO",
-            "desc": "比例：500*125，请尽量选择png无底色图片",
-            "width": 500,
-            "height": 125,
-            "allow": ["png", "jpg", "jpeg"],
-            "size": 2,
-            "type": "upload",
-            "fileName": "",
-            "default": ""
-          },
-          {
-            "key": "favicon",
-            "title": "网站Favicon",
-            "desc": "比例：1:1",
-            "width": 32,
-            "height": 32,
-            "allow": ["ico", "png", "svg"],
-            "size": 2,
-            "type": "upload",
-            "fileName": "",
-            "default": ""
-          },
-          {
-            "key": "disable_gutenberg",
-            "title": "禁用Gutenberg编辑器",
-            "desc": "禁用Gutenberg编辑器",
-            "type": "radio",
-            "default": "N",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "hide_footer_wp_text",
-            "title": "隐藏底部'感谢使用WordPress进行创作'和左上角标识",
-            "desc": "隐藏底部'感谢使用WordPress进行创作'和左上角标识",
-            "type": "radio",
-            "default": "N",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "site_gray_mode",
-            "title": "全站变灰（可供用于悼念日或其他事件变灰需求）",
-            "desc": "全站变灰（可供用于悼念日或其他事件变灰需求）",
-            "type": "radio",
-            "default": "N",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "index_carousel",
-            "title": "显示首页幻灯片",
-            "desc": "显示首页幻灯片",
-            "type": "radio",
-            "default": "N",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "index_carousel_max",
-            "title": "幻灯最大显示数量",
-            "desc": "幻灯最大显示数量",
-            "type": "text",
-            "default": "10"
-          },
-          {
-            "key": "login_protection",
-            "title": "启用后台登录保护",
-            "desc": "启用后则用'wp-login.php?{后台登录保护参数}={后台登录保护值}'的方式访问",
-            "type": "radio",
-            "default": "N",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "lp_user",
-            "title": "后台登录保护参数",
-            "desc": "后台登录保护参数",
-            "type": "text",
-            "default": "admin"
-          },
-          {
-            "key": "lp_pass",
-            "title": "后台登录保护值",
-            "desc": "后台登录保护值",
-            "type": "text",
-            "default": "admin"
+      {
+          "global_set": {
+              "title": "全局设置",
+              "type": "group",
+              "item": [
+                  {
+                      "key": "index_mode",
+                      "title": "首页布局",
+                      "desc": "首页布局",
+                      "type": "radio",
+                      "default": "blog",
+                      "options": [
+                          {
+                              "label": "博客风格",
+                              "value": "blog"
+                          },
+                          {
+                              "label": "CMS风格",
+                              "value": "cms"
+                          },
+                          {
+                              "label": "企业风格",
+                              "value": "company"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "post_style",
+                      "title": "文章样式",
+                      "desc": "文章样式",
+                      "type": "radio",
+                      "default": "list",
+                      "options": [
+                          {
+                              "label": "列表式",
+                              "value": "list"
+                          },
+                          {
+                              "label": "卡片式",
+                              "value": "card"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "theme_mode",
+                      "title": "默认主题模式",
+                      "desc": "默认主题模式",
+                      "type": "radio",
+                      "default": "light",
+                      "options": [
+                          {
+                              "label": "高亮模式",
+                              "value": "light"
+                          },
+                          {
+                              "label": "暗黑模式",
+                              "value": "dark"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "change_theme",
+                      "title": "允许切换主题模式",
+                      "desc": "允许切换主题模式",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "允许",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "不允许",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "light_logo",
+                      "title": "高亮模式下LOGO",
+                      "desc": "比例：500*125，请尽量选择png无底色图片",
+                      "width": 500,
+                      "height": 125,
+                      "allow": ["png", "jpg", "jpeg"],
+                      "size": 2,
+                      "type": "upload",
+                      "fileName": "",
+                      "default": ""
+                  },
+                  {
+                      "key": "dark_logo",
+                      "title": "暗黑模式下LOGO",
+                      "desc": "比例：500*125，请尽量选择png无底色图片",
+                      "width": 500,
+                      "height": 125,
+                      "allow": ["png", "jpg", "jpeg"],
+                      "size": 2,
+                      "type": "upload",
+                      "fileName": "",
+                      "default": ""
+                  },
+                  {
+                      "key": "favicon",
+                      "title": "网站Favicon",
+                      "desc": "比例：1:1",
+                      "width": 32,
+                      "height": 32,
+                      "allow": ["ico", "png", "svg"],
+                      "size": 2,
+                      "type": "upload",
+                      "fileName": "",
+                      "default": ""
+                  },
+                  {
+                      "key": "disable_gutenberg",
+                      "title": "禁用Gutenberg编辑器",
+                      "desc": "禁用Gutenberg编辑器",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "hide_footer_wp_text",
+                      "title": "隐藏底部'感谢使用WordPress进行创作'和左上角标识",
+                      "desc": "隐藏底部'感谢使用WordPress进行创作'和左上角标识",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "site_gray_mode",
+                      "title": "全站变灰（可供用于悼念日或其他事件变灰需求）",
+                      "desc": "全站变灰（可供用于悼念日或其他事件变灰需求）",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "index_carousel",
+                      "title": "显示首页幻灯片",
+                      "desc": "显示首页幻灯片",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "index_carousel_max",
+                      "title": "幻灯最大显示数量",
+                      "desc": "幻灯最大显示数量",
+                      "type": "text",
+                      "default": "10"
+                  },
+                  {
+                      "key": "login_protection",
+                      "title": "启用后台登录保护",
+                      "desc": "启用后则用'wp-login.php?{后台登录保护参数}={后台登录保护值}'的方式访问",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "lp_user",
+                      "title": "后台登录保护参数",
+                      "desc": "后台登录保护参数",
+                      "type": "text",
+                      "default": "admin"
+                  },
+                  {
+                      "key": "lp_pass",
+                      "title": "后台登录保护值",
+                      "desc": "后台登录保护值",
+                      "type": "text",
+                      "default": "admin"
+                  }
+              ]
           }
-        ]
-      }
-    },
-    {
-      "basic_set": {
-        "title": "基础设置",
-        "type": "group",
-        "item": [
-          {
-            "key": "img_lazy_thumb",
-            "title": "启用缩略图延迟加载",
-            "desc": "启用缩略图延迟加载",
-            "type": "radio",
-            "default": "N",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "img_lazy_paged",
-            "title": "启用正文图片延迟加载",
-            "desc": "启用正文图片延迟加载",
-            "type": "radio",
-            "default": "N",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "comment_avatar",
-            "title": "留言头像",
-            "desc": "比例：512*512，请尽量选择png无底色图片",
-            "width": 512,
-            "height": 512,
-            "allow": ["png", "jpg", "jpeg"],
-            "size": 2,
-            "type": "upload",
-            "fileName": "",
-            "default": ""
-          },
-          {
-            "key": "comment_ajax",
-            "title": "评论Ajax翻页",
-            "desc": "评论Ajax翻页",
-            "type": "radio",
-            "default": "Y",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "comment_level",
-            "title": "显示评论等级",
-            "desc": "显示评论等级",
-            "type": "radio",
-            "default": "Y",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "comment_mail_notify",
-            "title": "评论回复邮件通知",
-            "desc": "评论回复邮件通知",
-            "type": "radio",
-            "default": "Y",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "link_blank_content",
-            "title": "新标签页打开内容",
-            "desc": "新标签页打开内容",
-            "type": "radio",
-            "default": "Y",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "page_ajax_load",
-            "title": "页面无刷新加载",
-            "desc": "开启（新标签页打开的链接除外）",
-            "type": "radio",
-            "default": "Y",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "async_view",
-            "title": "异步浏览量统计",
-            "desc": "开启（此选项为开启缓存后浏览量不自增问题解决方案）",
-            "type": "radio",
-            "default": "Y",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "page_animate",
-            "title": "页面模块载入动画",
-            "desc": "页面模块载入动画",
-            "type": "radio",
-            "default": "Y",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "comment_has_at",
-            "title": "评论内容显示@",
-            "desc": "评论内容显示@",
-            "type": "radio",
-            "default": "Y",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "page_copy_right",
-            "title": "显示正文版权说明",
-            "desc": "显示正文版权说明",
-            "type": "radio",
-            "default": "Y",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "page_bottom_recommend",
-            "title": "显示正文底部相关推荐",
-            "desc": "显示正文底部相关推荐",
-            "type": "radio",
-            "default": "Y",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "link_page",
-            "title": "友情链接页面",
-            "desc": "友情链接页面",
-            "type": "radio",
-            "default": "Y",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "post_reward",
-            "title": "文章赞赏",
-            "desc": "文章赞赏",
-            "type": "radio",
-            "default": "Y",
-            "options": [
-              {
-                "label": "是",
-                "value": "Y"
-              },
-              {
-                "label": "否",
-                "value": "N"
-              }
-            ]
-          },
-          {
-            "key": "post_reward_alipay",
-            "title": "文章赞赏支付宝二维码",
-            "desc": "比例：512*512，请尽量选择png无底色图片",
-            "width": 512,
-            "height": 512,
-            "allow": ["png", "jpg", "jpeg"],
-            "size": 2,
-            "type": "upload",
-            "fileName": "",
-            "default": ""
-          },
-          {
-            "key": "post_reward_wx",
-            "title": "文章赞赏微信二维码",
-            "desc": "比例：512*512，请尽量选择png无底色图片",
-            "width": 512,
-            "height": 512,
-            "allow": ["png", "jpg", "jpeg"],
-            "size": 2,
-            "type": "upload",
-            "fileName": "",
-            "default": ""
+      },
+      {
+          "basic_set": {
+              "title": "基础设置",
+              "type": "group",
+              "item": [
+                  {
+                      "key": "img_lazy_thumb",
+                      "title": "启用缩略图延迟加载",
+                      "desc": "启用缩略图延迟加载",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "img_lazy_paged",
+                      "title": "启用正文图片延迟加载",
+                      "desc": "启用正文图片延迟加载",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "comment_avatar",
+                      "title": "留言头像",
+                      "desc": "比例：512*512，请尽量选择png无底色图片",
+                      "width": 512,
+                      "height": 512,
+                      "allow": ["png", "jpg", "jpeg"],
+                      "size": 2,
+                      "type": "upload",
+                      "fileName": "",
+                      "default": ""
+                  },
+                  {
+                      "key": "comment_ajax",
+                      "title": "评论Ajax翻页",
+                      "desc": "评论Ajax翻页",
+                      "type": "radio",
+                      "default": "Y",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "comment_level",
+                      "title": "显示评论等级",
+                      "desc": "显示评论等级",
+                      "type": "radio",
+                      "default": "Y",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "comment_mail_notify",
+                      "title": "评论回复邮件通知",
+                      "desc": "评论回复邮件通知",
+                      "type": "radio",
+                      "default": "Y",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "link_blank_content",
+                      "title": "新标签页打开内容",
+                      "desc": "新标签页打开内容",
+                      "type": "radio",
+                      "default": "Y",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "page_ajax_load",
+                      "title": "页面无刷新加载",
+                      "desc": "开启（新标签页打开的链接除外）",
+                      "type": "radio",
+                      "default": "Y",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "async_view",
+                      "title": "异步浏览量统计",
+                      "desc": "开启（此选项为开启缓存后浏览量不自增问题解决方案）",
+                      "type": "radio",
+                      "default": "Y",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "page_animate",
+                      "title": "页面模块载入动画",
+                      "desc": "页面模块载入动画",
+                      "type": "radio",
+                      "default": "Y",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "comment_has_at",
+                      "title": "评论内容显示@",
+                      "desc": "评论内容显示@",
+                      "type": "radio",
+                      "default": "Y",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "page_copy_right",
+                      "title": "显示正文版权说明",
+                      "desc": "显示正文版权说明",
+                      "type": "radio,default=Y",
+                      "default": "Y",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "page_bottom_recommend",
+                      "title": "显示正文底部相关推荐",
+                      "desc": "显示正文底部相关推荐",
+                      "type": "radio",
+                      "default": "Y",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "link_page",
+                      "title": "友情链接页面",
+                      "desc": "友情链接页面",
+                      "type": "radio",
+                      "default": "Y",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "post_reward",
+                      "title": "文章赞赏",
+                      "desc": "文章赞赏",
+                      "type": "radio",
+                      "default": "Y",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "post_reward_alipay",
+                      "title": "文章赞赏支付宝二维码",
+                      "desc": "比例：512*512，请尽量选择png无底色图片",
+                      "width": 512,
+                      "height": 512,
+                      "allow": ["png", "jpg", "jpeg"],
+                      "size": 2,
+                      "type": "upload",
+                      "fileName": "",
+                      "default": ""
+                  },
+                  {
+                      "key": "post_reward_wx",
+                      "title": "文章赞赏微信二维码",
+                      "desc": "比例：512*512，请尽量选择png无底色图片",
+                      "width": 512,
+                      "height": 512,
+                      "allow": ["png", "jpg", "jpeg"],
+                      "size": 2,
+                      "type": "upload",
+                      "fileName": "",
+                      "default": ""
+                  }
+              ]
           }
-        ]
+      },
+      {
+          "third_set": {
+              "title": "第三方设置",
+              "type": "group",
+              "item": [
+                  {
+                      "key": "oauth_qq",
+                      "title": "启用QQ登录",
+                      "desc": "QQ登录",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "oauth_qq_id",
+                      "title": "QQ互联APP_ID",
+                      "desc": "QQ互联APP",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "oauth_qq_key",
+                      "title": "QQ互联APP_ID",
+                      "desc": "QQ互联APP",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "oauth_wx",
+                      "title": "启用微信登录",
+                      "desc": "微信登录",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  }
+              ]
+          }
+      },
+      {
+          "cms_layout_set": {
+              "title": "CMS布局设置",
+              "type": "group",
+              "item": [
+                  {
+                      "key": "cms_show_new",
+                      "title": "最新文章",
+                      "desc": "显示最新文章",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "cms_show_new_num",
+                      "title": "最新文章显示数量",
+                      "desc": "设置最新文章显示数量",
+                      "type": "text",
+                      "default": "5"
+                  },
+                  {
+                      "key": "cms_show_2box",
+                      "title": "两栏CMS分类列表",
+                      "desc": "两栏CMS分类列表显示",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "cms_show_2box_id",
+                      "title": "两栏CMS分类ID列表",
+                      "desc": "每个ID之间用,进行分隔",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "catids",
+                      "title": "分类ID对照列表",
+                      "desc": "对照列表",
+                      "type": "desc",
+                      "default": "",
+                      "attr": ""
+                  },
+                  {
+                      "key": "cms_show_2box_num",
+                      "title": "两栏CMS分类每栏显示数量",
+                      "desc": "两栏CMS分类每栏显示数量",
+                      "type": "text",
+                      "default": "6"
+                  }
+              ]
+          }
+      },
+      {
+          "company_layout_set": {
+              "title": "企业布局设置",
+              "type": "group",
+              "item": [
+                  {
+                      "key": "company_about_t",
+                      "title": "「关于我们」标题",
+                      "desc": "企业介绍",
+                      "type": "text",
+                      "default": "企业介绍"
+                  },
+                  {
+                      "key": "company_about_c",
+                      "title": "「关于我们」内容（支持HTML）",
+                      "desc": "关于我们内容",
+                      "type": "textarea",
+                      "default": "关于我们内容"
+                  },
+                  {
+                      "key": "company_about_a",
+                      "title": "「关于我们」详情链接",
+                      "desc": "关于我们内容",
+                      "type": "text",
+                      "default": "关于我们内容"
+                  },
+                  {
+                      "key": "company_product_title",
+                      "title": "「产品介绍」大标题",
+                      "desc": "产品介绍",
+                      "type": "text",
+                      "default": "产品介绍"
+                  },
+                  {
+                      "key": "company_soul_title",
+                      "title": "「解决方案」大标题",
+                      "desc": "解决方案",
+                      "type": "text",
+                      "default": "解决方案"
+                  },
+                  {
+                      "key": "company_news_open",
+                      "title": "显示新闻",
+                      "desc": "是否显示新闻",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "company_news_title",
+                      "title": "新闻模块标题",
+                      "desc": "新闻动态",
+                      "type": "text",
+                      "default": "新闻动态"
+                  },
+                  {
+                      "key": "company_news_cid",
+                      "title": "新闻分类目录（每个分类之间用英文逗号\",\"分隔）",
+                      "desc": "新闻分类",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "company_news_cid_info",
+                      "title": "分类ID对照列表",
+                      "desc": "对照列表",
+                      "type": "desc",
+                      "default": "",
+                      "attr": ""
+                  },
+                  {
+                      "key": "company_news_max_num",
+                      "title": "新闻显示数量",
+                      "desc": "显示数量",
+                      "type": "text",
+                      "default": "4"
+                  }
+              ]
+          }
+      },
+      {
+          "anti_brush_set": {
+              "title": "防刷设置",
+              "type": "group",
+              "item": [
+                  {
+                      "key": "vd_comment",
+                      "title": "启用评论防刷验证",
+                      "desc": "评论防刷验证",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "vd_turnstile_site_key",
+                      "title": "turnstile site key",
+                      "desc": "站点密钥 <a href=\"https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/\">接入地址</a>",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "vd_turnstile_key",
+                      "title": "turnstile key",
+                      "desc": "密钥",
+                      "type": "text",
+                      "default": ""
+                  }
+              ]
+          }
+      },
+      {
+          "ad_set": {
+              "title": "广告设置",
+              "type": "group",
+              "item": [
+                  {
+                      "key": "ad_g_top_c",
+                      "title": "启用全站顶部广告",
+                      "desc": "全站顶部广告",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "ad_g_top",
+                      "title": "全站顶部广告内容",
+                      "desc": "顶部广告内容",
+                      "type": "textarea",
+                      "default": ""
+                  },
+                  {
+                      "key": "ad_g_bottom_c",
+                      "title": "启用全站底部广告",
+                      "desc": "全站底部广告",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "ad_g_bottom",
+                      "title": "全站底部广告内容",
+                      "desc": "底部广告内容",
+                      "type": "textarea",
+                      "default": ""
+                  },
+                  {
+                      "key": "ad_page_t_c",
+                      "title": "启用文章内顶部广告",
+                      "desc": "文章内顶部广告",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "ad_page_t",
+                      "title": "文章内顶部广告内容",
+                      "desc": "显示在面包屑导航下",
+                      "type": "textarea",
+                      "default": ""
+                  },
+                  {
+                      "key": "ad_page_c_b_c",
+                      "title": "启用文章内容底部广告",
+                      "desc": "文章内容底部广告",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "ad_page_c_b",
+                      "title": "文章内容底部广告内容",
+                      "desc": "会显示在文章结尾处",
+                      "type": "textarea",
+                      "default": ""
+                  },
+                  {
+                      "key": "ad_comment_t_c",
+                      "title": "启用评论上方广告",
+                      "desc": "评论上方广告",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "ad_comment_t",
+                      "title": "评论上方广告内容",
+                      "desc": "评论上方广告内容",
+                      "type": "textarea",
+                      "default": ""
+                  }
+              ]
+          }
+      },
+      {
+          "smtp_set": {
+              "title": "SMTP设置",
+              "type": "group",
+              "item": [
+                  {
+                      "key": "smtp_open",
+                      "title": "启用主题SMTP覆盖WordPress默认配置",
+                      "desc": "全站顶部广告",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "smtp_ssl",
+                      "title": "启用SSL安全模式",
+                      "desc": "SSL安全模式",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "smtp_form_addr",
+                      "title": "发件人地址",
+                      "desc": "发件人地址",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "smtp_form_name",
+                      "title": "发件人名称",
+                      "desc": "发件人地址",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "smtp_host",
+                      "title": "SMTP服务器地址",
+                      "desc": "如163邮箱的为：smtp.163.com",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "smtp_port",
+                      "title": "SMTP发送端口",
+                      "desc": "SMTP发送端口",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "smtp_user",
+                      "title": "邮箱账号",
+                      "desc": "邮箱账号",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "smtp_pw",
+                      "title": "邮箱密码",
+                      "desc": "一般非邮箱账号直接密码，而是对应的平台的POP3/SMTP授权码",
+                      "type": "text",
+                      "default": ""
+                  }
+              ]
+          }
+      },
+      {
+          "seo_set": {
+              "title": "SEO设置",
+              "type": "group",
+              "item": [
+                  {
+                      "key": "seo_open",
+                      "title": "启用主题SEO功能",
+                      "desc": "若您正在使用其它的SEO插件，请取消勾选",
+                      "type": "radio",
+                      "default": "N",
+                      "options": [
+                          {
+                              "label": "是",
+                              "value": "Y"
+                          },
+                          {
+                              "label": "否",
+                              "value": "N"
+                          }
+                      ]
+                  },
+                  {
+                      "key": "web_title",
+                      "title": "网站Title",
+                      "desc": "留空则不显示",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "web_title_2",
+                      "title": "网站首页副标题",
+                      "desc": "留空则不显示",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "title_conn",
+                      "title": "Title连接符",
+                      "desc": "Title连接符号，例如 \"-\"、\"|\"",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "keyword",
+                      "title": "首页关键词",
+                      "desc": "每个关键字之前用半角逗号分隔 一般不超过100个字符",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "no_category",
+                      "title": "不显示分类链接中的\"category\"",
+                      "desc": "不显示分类链接中的\"category\"",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "open_baidu_submit",
+                      "title": "发布文章主动推送至百度",
+                      "desc": "发布文章主动推送至百度",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "baidu_submit_url",
+                      "title": "百度推送接口地址",
+                      "desc": "http://data.zz.baidu.com/urls?site=https://xxx.com&token=XXXXXX",
+                      "type": "text",
+                      "default": ""
+                  },
+                  {
+                      "key": "tj_code_header",
+                      "title": "头部流量统计代码",
+                      "desc": "用于在页头添加统计代码",
+                      "type": "textarea",
+                      "default": ""
+                  },
+                  {
+                      "key": "tj_code_footer",
+                      "title": "底部流量统计代码",
+                      "desc": "用于在页脚添加统计代码",
+                      "type": "textarea",
+                      "default": ""
+                  },
+                  {
+                      "key": "footer_info",
+                      "title": "底部页脚信息",
+                      "desc": "显示备案信息及其他相关链接",
+                      "type": "editor",
+                      "default": "Copyright &copy;&nbsp;&nbsp;Themes Design By Hash&nbsp;&nbsp;"
+                  },
+                  {
+                      "key": "footer_about_me",
+                      "title": "底部关于我们说明",
+                      "desc": "底部关于我们说明",
+                      "type": "editor",
+                      "default": "底部关于我们说明"
+                  },
+                  {
+                      "key": "down_tips",
+                      "title": "下载说明/申明",
+                      "desc": "底部关于我们说明",
+                      "type": "editor",
+                      "default": "本站部分资源来自于网络收集，若侵犯了你的隐私或版权，请及时联系我们删除有关信息。"
+                  }
+              ]
+          }
       }
-    },
-    {
-      "third_set": {
-        "title": "第三方设置",
-        "type": "group"
-      }
-    },
-    {
-      "cms_layout_set": {
-        "title": "CMS布局设置",
-        "type": "group"
-      }
-    },
-    {
-      "company_layout_set": {
-        "title": "企业布局设置",
-        "type": "group"
-      }
-    },
-    {
-      "anti_brush_set": {
-        "title": "防刷设置",
-        "type": "group"
-      }
-    },
-    {
-      "ad_set": {
-        "title": "广告设置",
-        "type": "group"
-      }
-    },
-    {
-      "smtp_set": {
-        "title": "SMTP设置",
-        "type": "group"
-      }
-    },
-    {
-      "seo_set": {
-        "title": "SEO设置",
-        "type": "group"
-      }
-    }
   ],
   "css": [],
   "style": {}

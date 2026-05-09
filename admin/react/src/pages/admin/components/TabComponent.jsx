@@ -1,16 +1,11 @@
-// import { useRef, useReducer, useState, useContext } from 'react'
-import { UploadOutlined } from '@ant-design/icons'
-// import { Input, List, Radio, Divider, Typography, message, Upload, Button, Spin } from 'antd'
 import { tasksReducer } from '@/utils'
 
 import UploadComponent from './UploadComponent'
 
-const BasicSet = props => {
-  const { item } = props
-  const { basic_set } = item
-  const { item: _item } = basic_set
-
-  const initialTasks = _item || []
+const GlobalSet = props => {
+  console.log(props, 666);
+  
+  const initialTasks = props.data.item || []
 
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks)
   const handleChange = (key, value) => {
@@ -60,4 +55,4 @@ const BasicSet = props => {
   return dom
 }
 
-export default BasicSet
+export default GlobalSet
