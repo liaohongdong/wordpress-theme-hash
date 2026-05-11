@@ -54,7 +54,7 @@ export default defineConfig({
               // }
               // 首字母大写的组件名，直接从 antd 导入
               const antdComponents = new Set([
-                'App', 'message',
+                'App', 'message', 'Flex',
                 'Button', 'Input', 'Form', 'Table', 'Modal', 'Card',
                 'Space', 'Select', 'DatePicker', 'Drawer', 'Message',
                 'Typography', 'Upload', 'Radio', 'List', 'Checkbox',

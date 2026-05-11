@@ -26,6 +26,7 @@ class Admin
     // 读取默认配置
     $data = ConfigReader::read($location);
     self::$options = apply_filters('hash_admin_options', $data);
+    
     return self::$options;
   }
   static function get_admin_options_name()
@@ -110,7 +111,7 @@ class Admin
     // $options_framework = new Options_Framework;
     $name = $this->get_admin_options_name();
     // var_dump($name);
-    register_setting('hash-framework', $name, array($this, 'validate_options'));
+    register_setting('hash_framework_group', $name, array($this, 'validate_options'));
 
     // register_setting( 'optionsframework', $name, array ( $this, 'validate_options' ) );
   }

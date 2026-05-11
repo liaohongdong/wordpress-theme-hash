@@ -28,6 +28,7 @@ if (!function_exists('_js_parameters')) {
       'user_info' => is_user_logged_in() ? wp_get_current_user() : null,
       'test_me_nonce' => wp_create_nonce('test_me'),
       'ajaxNonce' => wp_create_nonce('ajax'),
+      'admin_save_nonce' => wp_create_nonce('admin_save'),
     );
     if (isset($registered_settings[Admin::get_admin_options_name()])) {
       $data = get_option(Admin::get_admin_options_name());
