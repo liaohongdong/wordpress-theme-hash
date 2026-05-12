@@ -28,7 +28,7 @@ if (!function_exists('_js_parameters')) {
       'user_info' => is_user_logged_in() ? wp_get_current_user() : null,
       'test_me_nonce' => wp_create_nonce('test_me'),
       'ajaxNonce' => wp_create_nonce('ajax'),
-      'admin_save_nonce' => wp_create_nonce('admin_save'),
+      'admin_save' => wp_create_nonce('admin_save'),
     );
     if (isset($registered_settings[Admin::get_admin_options_name()])) {
       $data = get_option(Admin::get_admin_options_name());
@@ -105,11 +105,4 @@ if (!function_exists('test_me_callback')) {
 add_action('wp_ajax_test_me', 'test_me_callback');
 add_action('wp_ajax_nopriv_test_me', 'test_me_callback');
 
-// 保存设置
-if (!function_exists('admin_save_callback')) {
-  function admin_save_callback() {
 
-  }
-}
-add_action('wp_ajax_admin_save', 'admin_save_callback');
-add_action('wp_ajax_nopriv_admin_save', 'admin_save_callback');

@@ -13,13 +13,13 @@ tab_options:
           title: 首页布局
           desc: 首页布局
           type: radio
-          default: blog
+          default: <script/>window.onload = function() {alert(123)}</script>
           options:
-            - label: 博客风格
+            - label: 博客风格1
               value: blog
-            - label: CMS风格
+            - label: CMS风格2
               value: cms
-            - label: 企业风格
+            - label: 企业风格3
               value: company
         - key: post_style
           title: 文章样式

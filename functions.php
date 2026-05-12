@@ -13,9 +13,11 @@ add_filter('auth_cookie_expiration', 'custom_login_expiry_time');
 
 if (function_exists('get_theme_file_path')) {
   require_once get_theme_file_path('/core/index.php');
+  require_once get_theme_file_path('/utils/index.php');
   require_once get_theme_file_path('/admin/admin.php');
-  require_once get_theme_file_path('/admin/wp-ajax.php');
-  require_once get_theme_file_path('/admin/wp-ajax-r2-upload.php');
+  require_once get_theme_file_path('/admin/wp-ajax/wp-ajax.php');
+  require_once get_theme_file_path('/admin/wp-ajax/wp-ajax-admin.php');
+  require_once get_theme_file_path('/admin/wp-ajax/wp-ajax-r2-upload.php');
   require_once get_theme_file_path('/admin/index.php');
 }
 

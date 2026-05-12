@@ -21,12 +21,12 @@ class Admin
   static function &_admin_options()
   {
     // 外部可通过 add_filter('admin_options_location', 回调函数) 修改配置文件路径
-    // $location = apply_filters('admin_options_location', get_theme_file_path('/data/admin_options.yaml'));
-    $location = apply_filters('admin_options_location', get_theme_file_path('/data/admin_options.json'));
+    $location = apply_filters('admin_options_location', get_theme_file_path('/data/admin_options.yaml'));
+    // $location = apply_filters('admin_options_location', get_theme_file_path('/data/admin_options.json'));
     // 读取默认配置
     $data = ConfigReader::read($location);
     self::$options = apply_filters('hash_admin_options', $data);
-    
+
     return self::$options;
   }
   static function get_admin_options_name()
