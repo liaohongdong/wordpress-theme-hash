@@ -82,3 +82,56 @@ function esc_html_decode_deep($data)
 
   return '';
 }
+
+/**
+ * 解析查询字符串为数组
+ * @param string $input 查询字符串或完整URL
+ * @return array 解析后的关联数组
+ */
+function parseQueryToArray(string $input): array
+{
+  if (trim($input) === '') {
+    return [];
+  }
+
+  $queryString = $input;
+  if (str_contains($input, '?')) {
+    $urlParts = parse_url($input);
+    $queryString = $urlParts['query'] ?? '';
+  }
+
+  $result = [];
+  parse_str($queryString, $result);
+
+  return $result;
+}
+
+/**
+ * 将数组转换为查询字符串
+ * @param array $data 关联数组
+ * @return string 标准查询字符串
+ */
+function arrayToQueryString(array $data): string
+{
+  return http_build_query($data);
+}
+
+/**
+ * 解析查询字符串为JSON（基于数组函数封装）
+ */
+function parseQueryToJsonAdvanced(string $input): string
+{
+  $array = parseQueryToArray($input);
+  return json_encode($array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+}
+
+// 双向转换示例
+// $query = "action=admin_save&nonce=ae6653f359";
+// $array = parseQueryToArray($query);
+// $json = parseQueryToJsonAdvanced($query);
+// $newQuery = arrayToQueryString($array);
+
+// echo "数组：\n";
+// print_r($array);
+// echo "\nJSON：\n$json\n";
+// echo "\n转回查询字符串：\n$newQuery\n";

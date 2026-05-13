@@ -63,6 +63,14 @@ class Admin
       $menu['menu_slug'],
       array('Admin', 'options_page')
     );
+
+    // add_options_page(
+    //   '我的插件设置', // 页面标题
+    //   '我的插件',     // 菜单标题
+    //   'manage_options', // 所需权限
+    //   'my-plugin-settings', // 页面slug
+    //   'my_plugin_render_settings_page' // 渲染函数
+    // );
   }
 
   function enqueue_admin_styles($hook)

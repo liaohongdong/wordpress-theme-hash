@@ -4,6 +4,10 @@
 if (!function_exists('admin_save_callback')) {
   function admin_save_callback()
   {
+    if (!current_user_can('manage_options')) {
+      wp_send_json_error('你没有权限执行此操作');
+    }
+
     $json = file_get_contents('php://input');
     $json = parseQueryToJsonAdvanced($json);
     $json = json_decode($json, true);
@@ -17,72 +21,27 @@ if (!function_exists('admin_save_callback')) {
         'data' => '',
         'message' => '安全验证失败，请刷新页面重试'
       ));
+      return;
     }
-    $item = $data['item'] ?? [];
-    // $item = $_POST['item'] ?? [];
-    // $item = isset($_POST['item']) ? json_decode(stripslashes($_POST['item']), true) : [];
-    error_log(print_r($item, true));
-    // 初始化响应数据
-    $response = array(
-      'success' => false,
-      'data' => $_POST['item'],
-      'message' => 'haha'
-    );
-    wp_send_json($response);
+    if (json_last_error() !== JSON_ERROR_NONE) {
+      wp_send_json_error('数据格式错误');
+      return;
+    }
+    $errors = get_settings_errors('admin_options');
+    if (!empty($errors)) {
+      // 提取错误消息
+      $error_messages = array_column($errors, 'message');
+      wp_send_json_error([
+        'message' => implode(', ', $error_messages)
+      ]);
+      return;
+    }
+    update_option('my_plugin_settings', $_POST['item']);
+    wp_send_json_success([
+      'message' => '保存成功',
+      'data' => '',
+    ]);
   }
 }
 add_action('wp_ajax_admin_save', 'admin_save_callback');
 add_action('wp_ajax_nopriv_admin_save', 'admin_save_callback');
-
-/**
- * 解析查询字符串为数组
- * @param string $input 查询字符串或完整URL
- * @return array 解析后的关联数组
- */
-function parseQueryToArray(string $input): array
-{
-  if (trim($input) === '') {
-    return [];
-  }
-
-  $queryString = $input;
-  if (str_contains($input, '?')) {
-    $urlParts = parse_url($input);
-    $queryString = $urlParts['query'] ?? '';
-  }
-
-  $result = [];
-  parse_str($queryString, $result);
-
-  return $result;
-}
-
-/**
- * 将数组转换为查询字符串
- * @param array $data 关联数组
- * @return string 标准查询字符串
- */
-function arrayToQueryString(array $data): string
-{
-  return http_build_query($data);
-}
-
-/**
- * 解析查询字符串为JSON（基于数组函数封装）
- */
-function parseQueryToJsonAdvanced(string $input): string
-{
-  $array = parseQueryToArray($input);
-  return json_encode($array, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-}
-
-// 双向转换示例
-// $query = "action=admin_save&nonce=ae6653f359";
-// $array = parseQueryToArray($query);
-// $json = parseQueryToJsonAdvanced($query);
-// $newQuery = arrayToQueryString($array);
-
-// echo "数组：\n";
-// print_r($array);
-// echo "\nJSON：\n$json\n";
-// echo "\n转回查询字符串：\n$newQuery\n";
