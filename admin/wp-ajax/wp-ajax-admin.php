@@ -16,11 +16,7 @@ if (!function_exists('admin_save_callback')) {
     if (!check_ajax_referer('admin_save', 'nonce', false)) {
       // $nonce = $json['nonce'] ?? '';
       // if (!wp_verify_nonce($nonce, 'admin_save')) {
-      wp_send_json(array(
-        'success' => false,
-        'data' => '',
-        'message' => '安全验证失败，请刷新页面重试'
-      ));
+      wp_send_json_error('安全验证失败，请刷新页面重试');
       return;
     }
     if (json_last_error() !== JSON_ERROR_NONE) {
@@ -29,18 +25,13 @@ if (!function_exists('admin_save_callback')) {
     }
     $errors = get_settings_errors('admin_options');
     if (!empty($errors)) {
-      // 提取错误消息
       $error_messages = array_column($errors, 'message');
-      wp_send_json_error([
-        'message' => implode(', ', $error_messages)
-      ]);
+      wp_send_json_error(implode(', ', $error_messages));
       return;
     }
-    update_option('my_plugin_settings', $_POST['item']);
-    wp_send_json_success([
-      'message' => '保存成功',
-      'data' => '',
-    ]);
+    error_log(print_r($_POST['item'], true));
+    // update_option('admin_options', $_POST['item']);
+    wp_send_json_success('保存成功');
   }
 }
 add_action('wp_ajax_admin_save', 'admin_save_callback');

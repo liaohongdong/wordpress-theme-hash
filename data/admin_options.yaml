@@ -15,11 +15,11 @@ tab_options:
           type: radio
           default: <script/>window.onload = function() {alert(123)}</script>
           options:
-            - label: 博客风格1
+            - label: 博客风格
               value: blog
-            - label: CMS风格2
+            - label: CMS风格
               value: cms
-            - label: 企业风格3
+            - label: 企业风格
               value: company
         - key: post_style
           title: 文章样式
@@ -477,7 +477,6 @@ tab_options:
           desc: 显示数量
           type: text
           default: 4
-
   - anti_brush_set:
       title: 防刷设置
       type: group
@@ -502,7 +501,6 @@ tab_options:
           desc: 密钥
           type: text
           default: ""
-
   - ad_set:
       title: 广告设置
       type: group
@@ -582,7 +580,6 @@ tab_options:
           desc: 评论上方广告内容
           type: textarea
           default: ""
-
   - smtp_set:
       title: SMTP设置
       type: group
@@ -637,7 +634,6 @@ tab_options:
           desc: 一般非邮箱账号直接密码，而是对应的平台的POP3/SMTP授权码
           type: text
           default: ""
-
   - seo_set:
       title: SEO设置
       type: group

@@ -25,6 +25,12 @@ class Admin
     // $location = apply_filters('admin_options_location', get_theme_file_path('/data/admin_options.json'));
     // 读取默认配置
     $data = ConfigReader::read($location);
+    // 读取已保存的数据
+    $tmp = get_option(self::get_admin_options_name());
+    // error_log(print_r($_data, true));
+    if ($tmp) {
+      // $data = $tmp;
+    }
     self::$options = apply_filters('hash_admin_options', $data);
 
     return self::$options;

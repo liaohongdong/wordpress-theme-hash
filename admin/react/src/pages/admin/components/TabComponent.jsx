@@ -3,23 +3,25 @@ import { tasksReducer } from '@/utils'
 import UploadComponent from './UploadComponent'
 
 const GlobalSet = props => {
-  console.log(props, 666);
-  
   const initialTasks = props.data.item || []
+  console.log(props, 666, initialTasks);
 
-  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks)
-  const handleChange = (key, value) => {
-    const target = tasks.find(i => i.key === key)
-    if (target) {
-      dispatch({
-        type: 'changed',
-        payload: { ...target, default: value }
-      })
-    }
-  }
+  // const [tasks, dispatch] = useReducer(tasksReducer, initialTasks)
+  // const handleChange = (key, value) => {
+  //   console.log(key, value, 999, props._key, window.__params.admin_options.tab_options);
+  //   const target = tasks.find(i => i.key === key)
+  //   if (target) {
+  //     dispatch({
+  //       type: 'changed',
+  //       payload: { ...target, default: value }
+  //     })
+
+  //   }
+  //   console.log(initialTasks, 181818);
+  // }
   const dom = (
     <>
-      <List
+      {/* <List
         bordered
         dataSource={tasks}
         renderItem={item => (
@@ -30,6 +32,7 @@ const GlobalSet = props => {
               alignItems: 'start'
             }}
           >
+            {JSON.stringify(item)}
             <div className="tw:text-lg tw:font-bold">
               <Typography.Text level={5}>{item.title}</Typography.Text>
             </div>
@@ -49,7 +52,7 @@ const GlobalSet = props => {
             </div>
           </List.Item>
         )}
-      />
+      /> */}
     </>
   )
   return dom

@@ -18,24 +18,32 @@ const onChange = key => {
 }
 
 const _App = () => {
-  const items = []
-  if (window.__params?.admin_options?.tab_options?.length) {
-    window.__params.admin_options.tab_options.forEach(e => {
-      console.log(e, 11)
-      const key = Object.keys(e)[0]
-      items.push({
+  const [spinning, setSpinning] = useState(false)
+  const [options, setOptions] = useState([])
+  const [items, setItems] = useState([])
+  // const _tmp = []
+  useEffect(() => {
+    const tabOptions = window.__params?.admin_options?.tab_options;
+    if (!tabOptions?.length) return;
+    setOptions([...tabOptions]);
+    const newItems = tabOptions.map((e) => {
+      const key = Object.keys(e)[0];
+      return {
         key: key,
         label: e[key].title,
-        children: <Children item={e} />
-      })
-    })
-  }
-  const [spinning, setSpinning] = useState(false)
+        children: <Children item={e} />,
+      };
+    });
+    setItems(newItems);
+  }, [])
+  console.log(items, 35)
+
   return (
     <App className="wrapper">
+      {JSON.stringify(items)}
       <TabContext.Provider value={{ spinning, setSpinning }}>
         {/* <h1 className="tw:text-[50px]! tw:font-bold tw:underline">antd version: {version}</h1> */}
-        <Spin spinning={spinning}>
+        {/* <Spin spinning={spinning}>
           <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
           <Flex gap="small" wrap style={{ 'margin-top': '12px' }}>
             <Button onClick={() => {}}>重置</Button>
@@ -43,7 +51,7 @@ const _App = () => {
               保存
             </Button>
           </Flex>
-        </Spin>
+        </Spin> */}
       </TabContext.Provider>
     </App>
   )
@@ -52,6 +60,8 @@ const _App = () => {
 const save = async (item, fn) => {
   fn(true)
   try {
+    console.log(item, 55)
+
     const res = await request.post(
       __params.ajax_url,
       qs.stringify({
@@ -60,10 +70,10 @@ const save = async (item, fn) => {
         item
       })
     )
-    if (res.data.success) {
+    if (res.success) {
       message.success('保存成功')
     } else {
-      message.error(res.data.message || '保存失败')
+      message.error(res.message || '保存失败')
     }
   } catch (err) {
     message.error('请求异常')

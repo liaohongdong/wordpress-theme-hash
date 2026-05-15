@@ -32,11 +32,11 @@ if (!function_exists('_js_parameters')) {
     );
     if (isset($registered_settings[Admin::get_admin_options_name()])) {
       $data = get_option(Admin::get_admin_options_name());
-      if ($data) {
-        $params[Admin::get_admin_options_name()] = get_option(Admin::get_admin_options_name());
-      } else {
+      // if ($data) {
+        // $params[Admin::get_admin_options_name()] = get_option(Admin::get_admin_options_name());
+      // } else {
         $params[Admin::get_admin_options_name()] = Admin::_admin_options();
-      }
+      // }
     }
     return $params;
   }
