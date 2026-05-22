@@ -14,44 +14,50 @@ message.config({
 })
 
 const onChange = key => {
-  console.log(key, 8)
+  console.log('切换标签', key)
 }
 
 const _App = () => {
   const [spinning, setSpinning] = useState(false)
-  const [options, setOptions] = useState([])
-  const [items, setItems] = useState([])
-  // const _tmp = []
+  const [tabOptions, setTabOptions] = useState([]) // 只存配置，不存组件
+  const [formData, setFormData] = useState({})
+
+  const handleChange = (pKey, fieldKey, val) => {
+    setFormData(prev => ({
+      ...prev,
+      // [fieldKey]: `${pKey}___${val}`
+      [fieldKey]: val
+    }))
+  }
+
   useEffect(() => {
-    const tabOptions = window.__params?.admin_options?.tab_options;
-    if (!tabOptions?.length) return;
-    setOptions([...tabOptions]);
-    const newItems = tabOptions.map((e) => {
-      const key = Object.keys(e)[0];
-      return {
-        key: key,
-        label: e[key].title,
-        children: <Children item={e} />,
-      };
-    });
-    setItems(newItems);
+    const tabs = window.__params?.admin_options?.tab_options || []
+    setTabOptions(tabs)
   }, [])
-  console.log(items, 35)
 
   return (
     <App className="wrapper">
-      {JSON.stringify(items)}
-      <TabContext.Provider value={{ spinning, setSpinning }}>
+      {JSON.stringify(tabOptions)}
+      ------------------------------------------------------------------------------------------------------------------------------------------------
+      {JSON.stringify(formData)}
+      <TabContext.Provider value={{ spinning, setSpinning, tabOptions, setTabOptions, formData, setFormData, handleChange }}>
         {/* <h1 className="tw:text-[50px]! tw:font-bold tw:underline">antd version: {version}</h1> */}
-        {/* <Spin spinning={spinning}>
-          <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+        <Spin spinning={spinning}>
+          <Tabs defaultActiveKey="global_set">
+            {tabOptions.map(tab => (
+              <Tabs.TabPane key={tab.key} tab={tab.title}>
+                <Children tabInfo={tab} formData={formData} handleChange={handleChange} />
+              </Tabs.TabPane>
+            ))}
+          </Tabs>
+
           <Flex gap="small" wrap style={{ 'margin-top': '12px' }}>
-            <Button onClick={() => {}}>重置</Button>
-            <Button type="primary" onClick={() => save(items, setSpinning)}>
+            <Button onClick={() => setFormData({})}>重置</Button>
+            <Button type="primary" onClick={() => save(formData, setSpinning)}>
               保存
             </Button>
           </Flex>
-        </Spin> */}
+        </Spin>
       </TabContext.Provider>
     </App>
   )

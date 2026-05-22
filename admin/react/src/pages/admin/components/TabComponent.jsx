@@ -3,8 +3,9 @@ import { tasksReducer } from '@/utils'
 import UploadComponent from './UploadComponent'
 
 const GlobalSet = props => {
-  const initialTasks = props.data.item || []
-  console.log(props, 666, initialTasks);
+  // const initialTasks = props.data.item || []
+  // console.log(props, 666, initialTasks);
+  console.log(props, 666);
 
   // const [tasks, dispatch] = useReducer(tasksReducer, initialTasks)
   // const handleChange = (key, value) => {
