@@ -1,3 +1,9 @@
+version: "1.0.0"
+title: "hash"
+name: "hash"
+description: "wordpress hash theme"
+keywords: "wordpress,hash,theme"
+themes: {}
 tab_options:
   - key: global_set
     title: 全局设置
@@ -7,7 +13,7 @@ tab_options:
         title: 首页布局
         desc: 首页布局
         type: radio
-        default: "<script/>window.onload = function() {alert(123)}</script>"
+        default: "blog"
         options:
           - label: 博客风格
             value: blog

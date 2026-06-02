@@ -29,8 +29,34 @@ if (!function_exists('admin_save_callback')) {
       wp_send_json_error(implode(', ', $error_messages));
       return;
     }
-    error_log(print_r($_POST['item'], true));
-    // update_option('admin_options', $_POST['item']);
+    if ($_POST['item']) {
+      // global $wpdb;
+      // $option_name = Admin::get_admin_options_name();
+      // $existing = get_option($option_name, []);
+      // $merged = array_merge($existing, $_POST['item']);
+      // $option_value = maybe_serialize($merged);
+      // $exists = $wpdb->get_var($wpdb->prepare(
+      //   "SELECT option_id FROM {$wpdb->options} WHERE option_name = %s",
+      //   $option_name
+      // ));
+      // if ($exists) {
+      //   $wpdb->update(
+      //     $wpdb->options,
+      //     ['option_value' => $option_value],
+      //     ['option_name' => $option_name]
+      //   );
+      // } else {
+      //   $wpdb->insert(
+      //     $wpdb->options,
+      //     [
+      //       'option_name' => $option_name,
+      //       'option_value' => $option_value,
+      //       'autoload' => 'yes',
+      //     ]
+      //   );
+      // }
+      update_option(Admin::get_admin_options_name(), array_merge(get_option(Admin::get_admin_options_name(), []), $_POST['item']));
+    }
     wp_send_json_success('保存成功');
   }
 }

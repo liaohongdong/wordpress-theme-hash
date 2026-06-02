@@ -25,7 +25,7 @@ const _App = () => {
   const handleChange = (pKey, fieldKey, val) => {
     setFormData(prev => ({
       ...prev,
-      // [fieldKey]: `${pKey}___${val}`
+      // [fieldKey]: `${pKey}___${val}`,
       [fieldKey]: val
     }))
   }
@@ -37,37 +37,36 @@ const _App = () => {
 
   return (
     <App className="wrapper">
-      {JSON.stringify(tabOptions)}
-      ------------------------------------------------------------------------------------------------------------------------------------------------
-      {JSON.stringify(formData)}
+      {JSON.stringify(formData)} 25
       <TabContext.Provider value={{ spinning, setSpinning, tabOptions, setTabOptions, formData, setFormData, handleChange }}>
-        {/* <h1 className="tw:text-[50px]! tw:font-bold tw:underline">antd version: {version}</h1> */}
-        <Spin spinning={spinning}>
-          <Tabs defaultActiveKey="global_set">
-            {tabOptions.map(tab => (
-              <Tabs.TabPane key={tab.key} tab={tab.title}>
-                <Children tabInfo={tab} formData={formData} handleChange={handleChange} />
-              </Tabs.TabPane>
-            ))}
-          </Tabs>
+        <div className="tabs-spin-wrap">
+          <Spin spinning={spinning}>
+            <Tabs defaultActiveKey="global_set">
+              {tabOptions.map(tab => (
+                <Tabs.TabPane key={tab.key} tab={tab.title}>
+                  <Children tabInfo={tab} formData={formData} handleChange={handleChange} />
+                </Tabs.TabPane>
+              ))}
+            </Tabs>
+          </Spin>
+        </div>
 
-          <Flex gap="small" wrap style={{ 'margin-top': '12px' }}>
-            <Button onClick={() => setFormData({})}>重置</Button>
-            <Button type="primary" onClick={() => save(formData, setSpinning)}>
-              保存
-            </Button>
-          </Flex>
-        </Spin>
+        <Flex gap="small" wrap style={{ 'margin-top': '12px' }}>
+          <Button onClick={() => setFormData({})}>重置</Button>
+          <Button type="primary" onClick={() => save(formData, setSpinning)}>
+            保存
+          </Button>
+        </Flex>
       </TabContext.Provider>
     </App>
   )
 }
 
 const save = async (item, fn) => {
+  console.log(item, 888);
+  
   fn(true)
   try {
-    console.log(item, 55)
-
     const res = await request.post(
       __params.ajax_url,
       qs.stringify({

@@ -18,7 +18,7 @@ class Admin
     }
   }
 
-  static function &_admin_options()
+  static function &_admin_options() // yaml 数据
   {
     // 外部可通过 add_filter('admin_options_location', 回调函数) 修改配置文件路径
     $location = apply_filters('admin_options_location', get_theme_file_path('/data/admin_options.yaml'));
@@ -26,14 +26,28 @@ class Admin
     // 读取默认配置
     $data = ConfigReader::read($location);
     // 读取已保存的数据
-    $tmp = get_option(self::get_admin_options_name());
+    // $tmp = get_option(self::get_admin_options_name());
     // error_log(print_r($_data, true));
-    if ($tmp) {
+    // if ($tmp) {
       // $data = $tmp;
-    }
+    // }
     self::$options = apply_filters('hash_admin_options', $data);
-
     return self::$options;
+  }
+  static function &_get_save_admin_option() // 手动修改后的数据
+  {
+    $data = self::_admin_options();
+    $tmp = get_option(self::get_admin_options_name());
+    if ($tmp && is_array($tmp)) {
+      foreach ($data['tab_options'] ?? [] as $tabIdx => &$tab) {
+        foreach ($tab['item'] ?? [] as $fieldIdx => &$field) {
+          if (isset($field['key'], $tmp[$field['key']])) {
+            $data['tab_options'][$tabIdx]['item'][$fieldIdx]['default'] = $tmp[$field['key']];
+          }
+        }
+      }
+    }
+    return $data;
   }
   static function get_admin_options_name()
   {
@@ -123,21 +137,39 @@ class Admin
   function settings_init()
   {
     // $options_framework = new Options_Framework;
-    $name = $this->get_admin_options_name();
+    // $name = $this->get_admin_options_name();
     // var_dump($name);
-    register_setting('hash_framework_group', $name, array($this, 'validate_options'));
+    // register_setting('hash_framework_group', $name, array($this, 'validate_options'));
 
     // register_setting( 'optionsframework', $name, array ( $this, 'validate_options' ) );
   }
-  function validate_options($input)
-  {
-    self::$options = $this->_admin_options();
-    return self::$options;
-  }
+  // function validate_options($input)
+  // {
+  //   $name = $this->get_admin_options_name();
+  //   $registered_settings = get_registered_settings();
+  //   error_log(print_r($registered_settings, true));
+  //   // 如果有保存过，用get_option
+  //   if (isset($registered_settings[$name])) {
+  //     self::$options = get_option($name);
+  //   } else {
+  //     self::$options = $this->_admin_options();
+  //   }
+  //   // 没有保存过，用yaml文件里的
+  //   // self::$options = $this->_admin_options();
+  //   return self::$options;
+  // }
 
   static function options_page()
   {
-    require_once get_template_directory() . '/admin/react/dist/admin.php';
+    $dev_server = 'http://localhost:3000';
+    $dev_flag = get_template_directory() . '/admin/react/.dev';
+    if (file_exists($dev_flag)) {
+      echo '<script type="module" src="' . $dev_server . '/@rsbuild/core/react-refresh.js"></script>';
+      echo '<script type="module" src="' . $dev_server . '/static/js/admin.js"></script>';
+      echo '<div id="root">admin</div>';
+    } else {
+      require_once get_template_directory() . '/admin/react/dist/admin.php';
+    }
 ?>
     <!-- <style type="text/tailwindcss">
       @import "tailwindcss" prefix(tw);

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "rsbuild build",
+    "watch": "node watch.mjs",
     "check": "biome check --write",
     "dev": "rsbuild dev --open",
     "format": "biome format --write",

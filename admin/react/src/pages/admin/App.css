@@ -7,6 +7,18 @@ body {
   background-image: linear-gradient(to bottom, #020917, #101725); */
 }
 
+.tabs-spin-wrap {
+  position: relative;
+}
+
+.tabs-spin-wrap .ant-spin-nested-loading > div > .ant-spin {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
 /* .content {
   display: flex;
   min-height: 100vh;

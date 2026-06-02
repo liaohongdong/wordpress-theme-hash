@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig, defaultAllowedOrigins } from '@rsbuild/core';
+import { defineConfig } from '@rsbuild/core';
 import { pluginBabel } from '@rsbuild/plugin-babel';
 import { pluginReact } from '@rsbuild/plugin-react';
 import { pluginSass } from '@rsbuild/plugin-sass';
@@ -38,6 +38,9 @@ export default defineConfig({
   tools: {
     // 与底层工具有关的选项
     rspack: {
+      watchOptions: {
+        poll: 1000,
+      },
       plugins: [
         // 自动导入 React Hooks
         AutoImport({
@@ -114,11 +117,7 @@ export default defineConfig({
     // 在本地开发和预览时都会生效
     // 等价于 `{ origin: '*' }`
     // cors: true,
-    cors: {
-      // 配置 `Access-Control-Allow-Origin` CORS 响应头
-      // origin: 'https://example.com',
-      origin: [defaultAllowedOrigins, 'https://example.com'],
-    },
+    cors: true,
   },
   security: {
     // 与 Web 安全有关的选项

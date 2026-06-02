@@ -17,7 +17,7 @@ if (!function_exists('_js_parameters')) {
   function _js_parameters()
   {
     var_dump('js_parameters33');
-    $registered_settings = get_registered_settings(); // 获取所有已注册的合法设置项
+    // $registered_settings = get_registered_settings(); // 获取所有已注册的合法设置项
     $params = array(
       'custom_domain' => customDomain,
       'ajax_url' => admin_url('admin-ajax.php'),
@@ -30,13 +30,12 @@ if (!function_exists('_js_parameters')) {
       'ajaxNonce' => wp_create_nonce('ajax'),
       'admin_save' => wp_create_nonce('admin_save'),
     );
-    if (isset($registered_settings[Admin::get_admin_options_name()])) {
-      $data = get_option(Admin::get_admin_options_name());
-      // if ($data) {
-        // $params[Admin::get_admin_options_name()] = get_option(Admin::get_admin_options_name());
-      // } else {
-        $params[Admin::get_admin_options_name()] = Admin::_admin_options();
-      // }
+    $name = Admin::get_admin_options_name();
+    $option = get_option($name);
+    if ($option) {
+      $params[Admin::get_admin_options_name()] = Admin::_get_save_admin_option();
+    } else {
+      $params[Admin::get_admin_options_name()] = Admin::_admin_options();
     }
     return $params;
   }
@@ -53,7 +52,7 @@ if (!function_exists('test_me_callback')) {
   {
     // 安全验证：验证 nonce 令牌（必须！防止恶意请求）
     if (!check_ajax_referer('test_me', 'nonce', false)) {
-    // if (!check_ajax_referer('custom_ajax', 'nonce', false)) {
+      // if (!check_ajax_referer('custom_ajax', 'nonce', false)) {
       wp_send_json(array(
         'success' => false,
         'data' => '',
@@ -104,5 +103,3 @@ if (!function_exists('test_me_callback')) {
 
 add_action('wp_ajax_test_me', 'test_me_callback');
 add_action('wp_ajax_nopriv_test_me', 'test_me_callback');
-
-
