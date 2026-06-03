@@ -21,6 +21,28 @@ if (function_exists('get_theme_file_path')) {
   require_once get_theme_file_path('/admin/index.php');
 }
 
+// 前端配置助手
+function hash_config($key = null, $default = '')
+{
+  static $options = null;
+  if ($options === null) {
+    $saved = get_option(Admin::get_admin_options_name(), []);
+    $options = is_array($saved) ? $saved : [];
+  }
+  if ($key === null) {
+    return $options;
+  }
+  return $options[$key] ?? $default;
+}
+
+// 主题设置
+add_action('after_setup_theme', function () {
+  add_theme_support('title-tag');
+  add_theme_support('post-thumbnails');
+  add_theme_support('html5', ['search-form', 'comment-form', 'comment-list', 'gallery', 'caption']);
+  register_nav_menus(['primary' => '主导航']);
+});
+
 // /**
 //  * 打印 WordPress Action 钩子的执行顺序
 //  * 仅用于调试，上线前请删除

@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "rsbuild build",
+    "build": "rsbuild build && node build-css.mjs",
+    "build:css": "node build-css.mjs",
     "watch": "node watch.mjs",
     "check": "biome check --write",
     "dev": "rsbuild dev --open",
@@ -35,6 +36,7 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "normalize.css": "^8.0.1",
+    "postcss": "^8.5.15",
     "qs": "^6.15.0",
     "tailwindcss": "^4.1.18"
   }

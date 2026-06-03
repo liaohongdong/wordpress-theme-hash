@@ -1,6 +1,10 @@
 <?php get_header(); ?>
 
 <div class="max-w-7xl mx-auto px-4 py-8">
+  <h1 class="text-2xl font-bold mb-8">
+    <?php the_archive_title(); ?>
+  </h1>
+
   <?php if (have_posts()) : ?>
     <div class="grid gap-6 <?php echo hash_config('post_style') === 'card' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : ''; ?>">
       <?php while (have_posts()) : the_post(); ?>
@@ -12,7 +16,7 @@
       <?php the_posts_pagination(['class' => 'flex justify-center gap-2']); ?>
     </div>
   <?php else : ?>
-    <p class="text-center text-gray-500">暂无内容</p>
+    <p class="text-gray-500">暂无内容</p>
   <?php endif; ?>
 </div>
 
