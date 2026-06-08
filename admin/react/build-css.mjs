@@ -8,12 +8,15 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const src = resolve(__dirname, '../../assets/css/frontend/tailwind.css');
 const dest = resolve(__dirname, '../../assets/css/frontend.css');
 
-// Use from path inside admin/react so node_modules resolves correctly
+// Keep from inside admin/react so @import "tailwindcss" resolves node_modules
 const virtualFrom = resolve(__dirname, 'src/frontend-tailwind.css');
+
+// Pass base option so Tailwind v4 scans from theme root for utility classes
+const tailwindBase = resolve(__dirname, '../../');
 
 const css = readFileSync(src, 'utf8');
 
-postcss([tailwindcssPlugin()])
+postcss([tailwindcssPlugin({ base: tailwindBase })])
   .process(css, { from: virtualFrom, to: dest, map: false })
   .then(result => {
     writeFileSync(dest, result.css);

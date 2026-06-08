@@ -1,22 +1,37 @@
 <?php get_header(); ?>
 
-<div class="max-w-7xl mx-auto px-4 py-8">
-  <h1 class="text-2xl font-bold mb-8">
-    搜索：<?php echo get_search_query(); ?>
-  </h1>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+  <div class="flex flex-col gap-1 mb-8">
+    <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">
+      搜索：<?php echo get_search_query(); ?>
+    </h1>
+    <p class="text-sm text-gray-400">
+      <?php global $wp_query; echo $wp_query->found_posts; ?> 个结果
+    </p>
+  </div>
 
   <?php if (have_posts()) : ?>
-    <div class="grid gap-6 <?php echo hash_config('post_style') === 'card' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : ''; ?>">
+    <div class="<?php echo hash_config('post_style') === 'card'
+      ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'
+      : 'flex flex-col'; ?>">
       <?php while (have_posts()) : the_post(); ?>
         <?php get_template_part('template-parts/content/loop'); ?>
       <?php endwhile; ?>
     </div>
 
-    <div class="mt-8">
-      <?php the_posts_pagination(['class' => 'flex justify-center gap-2']); ?>
-    </div>
+    <?php if ($GLOBALS['wp_query']->max_num_pages > 1) : ?>
+      <?php the_posts_pagination([
+        'mid_size' => 2,
+        'prev_text' => '‹ 上一页',
+        'next_text' => '下一页 ›',
+      ]); ?>
+    <?php endif; ?>
+
   <?php else : ?>
-    <p class="text-gray-500">未找到匹配结果</p>
+    <div class="text-center py-20">
+      <p class="text-gray-400 text-lg">未找到匹配结果</p>
+      <a href="<?php echo home_url(); ?>" class="inline-block mt-4 text-sm text-primary hover:text-primary-dark no-underline">返回首页 →</a>
+    </div>
   <?php endif; ?>
 </div>
 
