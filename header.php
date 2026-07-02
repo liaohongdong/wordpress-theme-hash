@@ -9,8 +9,6 @@
 <body <?php body_class('antialiased bg-surface text-gray-900'); ?>>
 <?php wp_body_open(); ?>
 
-<div id="loading-bar"></div>
-
 <div id="page" class="min-h-screen flex flex-col">
   <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200/60 relative">
     <div class="w-full px-4 sm:px-6 lg:px-8">
@@ -130,25 +128,6 @@
     if (searchBtn && searchOverlay) {
       searchBtn.addEventListener('click', openSearch);
       document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSearch(); });
-    }
-
-    var bar = document.getElementById('loading-bar');
-    if (bar) {
-      bar.classList.add('active');
-      window.addEventListener('load', function() {
-        bar.classList.remove('active');
-        bar.classList.add('done');
-        setTimeout(function() { bar.classList.remove('done'); }, 300);
-      });
-      document.addEventListener('click', function(e) {
-        var a = e.target.closest('a[href]');
-        if (!a || a.getAttribute('href') === '#') return;
-        if (a.host && a.host !== location.host) return;
-        bar.classList.remove('done', 'active');
-        bar.style.width = '0';
-        void bar.offsetHeight;
-        bar.classList.add('active');
-      });
     }
   })();
   </script>
