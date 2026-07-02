@@ -2209,6 +2209,15 @@
   .top-0 {
     top: calc(var(--spacing) * 0);
   }
+  .top-full {
+    top: 100%;
+  }
+  .right-0 {
+    right: calc(var(--spacing) * 0);
+  }
+  .left-0 {
+    left: calc(var(--spacing) * 0);
+  }
   .join {
     display: inline-flex;
     align-items: stretch;
@@ -3383,9 +3392,6 @@
   .overflow-hidden {
     overflow: hidden;
   }
-  .overflow-y-auto {
-    overflow-y: auto;
-  }
   .scroll-auto {
     scroll-behavior: auto;
   }
@@ -3947,9 +3953,6 @@
   .pt-6 {
     padding-top: calc(var(--spacing) * 6);
   }
-  .pt-16 {
-    padding-top: calc(var(--spacing) * 16);
-  }
   .pt-20 {
     padding-top: calc(var(--spacing) * 20);
   }
@@ -4307,6 +4310,10 @@
   }
   .shadow-2xl {
     --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-lg {
+    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .ring {
@@ -4962,6 +4969,9 @@
 }
 .mobile-nav {
   display: none;
+  max-height: 80vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 .mobile-nav.open {
   display: block;
@@ -4969,6 +4979,7 @@
 .mobile-nav .menu {
   flex-direction: column;
   width: 100%;
+  padding: 0.5rem 0;
 }
 .mobile-nav .menu details::details-content {
   transition-duration: 0s !important;

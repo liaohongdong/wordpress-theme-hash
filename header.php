@@ -10,7 +10,7 @@
 <?php wp_body_open(); ?>
 
 <div id="page" class="min-h-screen flex flex-col">
-  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200/60">
+  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200/60 relative">
     <div class="w-full px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-14 sm:h-16">
         <div class="flex items-center gap-2 sm:gap-3 min-w-0">
@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <div id="mobile-nav" class="mobile-nav fixed inset-0 z-50 bg-white pt-16 px-4 overflow-y-auto md:hidden">
+    <div id="mobile-nav" class="mobile-nav absolute top-full left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-lg md:hidden">
       <?php wp_nav_menu([
         'theme_location' => 'primary',
         'container' => false,
@@ -85,7 +85,6 @@
     function toggleMenu(open) {
       if (open === undefined) open = !mobileNav.classList.contains('open');
       mobileNav.classList.toggle('open', open);
-      document.body.style.overflow = open ? 'hidden' : '';
     }
     if (menuBtn && mobileNav) {
       menuBtn.addEventListener('click', function(e) { e.stopPropagation(); toggleMenu(); });

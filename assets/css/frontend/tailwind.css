@@ -52,9 +52,9 @@
 }
 
 /* ─── Mobile nav ─── */
-.mobile-nav { display: none; }
+.mobile-nav { display: none; max-height: 80vh; overflow-y: auto; overscroll-behavior: contain; }
 .mobile-nav.open { display: block; }
-.mobile-nav .menu { flex-direction: column; width: 100%; }
+.mobile-nav .menu { flex-direction: column; width: 100%; padding: 0.5rem 0; }
 .mobile-nav .menu details::details-content { transition-duration: 0s !important; }
 .mobile-nav .menu :where(li ul) { margin-inline-start: 0; padding-inline-start: 0; }
 
