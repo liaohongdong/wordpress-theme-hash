@@ -52,11 +52,13 @@
 }
 
 /* ─── Mobile nav ─── */
-.mobile-nav { display: none; max-height: 80vh; overflow-y: auto; overscroll-behavior: contain; }
-.mobile-nav.open { display: block; }
+.mobile-nav { visibility: hidden; overscroll-behavior: contain; overflow-y: auto; max-height: 80vh;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0.35s; }
+.mobile-nav.open { visibility: visible; clip-path: inset(0 0 0 0);
+  transition: clip-path 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s; }
 .mobile-nav .menu { flex-direction: column; width: 100%; padding: 0.5rem 0; }
 .mobile-nav .menu details::details-content { transition-duration: 0s !important; }
-.mobile-nav .menu :where(li ul) { margin-inline-start: 0; padding-inline-start: 0; }
 
 /* ─── Overlay ─── */
 .overlay { opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; }

@@ -4968,13 +4968,17 @@
   box-shadow: 0 1px 3px 0 oklch(0% 0 0/0.1), 0 1px 2px -1px oklch(0% 0 0/0.1);
 }
 .mobile-nav {
-  display: none;
-  max-height: 80vh;
-  overflow-y: auto;
+  visibility: hidden;
   overscroll-behavior: contain;
+  overflow-y: auto;
+  max-height: 80vh;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0.35s;
 }
 .mobile-nav.open {
-  display: block;
+  visibility: visible;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s;
 }
 .mobile-nav .menu {
   flex-direction: column;
@@ -4983,10 +4987,6 @@
 }
 .mobile-nav .menu details::details-content {
   transition-duration: 0s !important;
-}
-.mobile-nav .menu :where(li ul) {
-  margin-inline-start: 0;
-  padding-inline-start: 0;
 }
 .overlay {
   opacity: 0;
