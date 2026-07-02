@@ -3,7 +3,7 @@ import { genSuffPathByUploadFile } from '@/utils'
 import request from '@/utils/request'
 import axios from 'axios'
 import qs from 'qs'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { message } from 'antd'
 
 import TabContext from './TabContext'
@@ -11,6 +11,7 @@ import TabContext from './TabContext'
 const UploadComponent = ({ item, onUploadSuccess }) => {
   const { setSpinning } = useContext(TabContext);
   const uploadRef = useRef(null);
+  const [url, setUrl] = useState(item.default || '');
   const uploadProps = {
     name: 'file',
     openFileDialogOnClick: false,
@@ -125,7 +126,9 @@ const UploadComponent = ({ item, onUploadSuccess }) => {
     onChange: info => {
       console.log('onChange =', info)
       if (info.file.status === 'done') {
-        onUploadSuccess(info.file.response?.url)
+        const uploadedUrl = info.file.response?.url
+        setUrl(uploadedUrl)
+        onUploadSuccess(uploadedUrl)
         message.destroy()
         message.success('上传成功')
       }
@@ -137,12 +140,12 @@ const UploadComponent = ({ item, onUploadSuccess }) => {
   return (
     <>
       <style>{`.ant-upload-select { width: 100% !important; }`}</style>
-      <Upload {...uploadProps} ref={uploadRef} className="tw:!w-[30%]">
-        <div className="tw:flex tw:items-center tw:gap-2">
-          <Input value={item.default} className="tw:w-full" />
+      <div className="tw:flex tw:items-center tw:gap-2">
+        <Input value={url} onChange={e => { setUrl(e.target.value); onUploadSuccess(e.target.value); }} className="tw:w-full" />
+        <Upload {...uploadProps} ref={uploadRef} className="tw:shrink-0">
           <Button icon={<UploadOutlined />} onClick={() => uploadRef.current.nativeElement?.querySelector('input[type="file"]')?.click()} />
-        </div>
-      </Upload>
+        </Upload>
+      </div>
     </>
   )
 }
