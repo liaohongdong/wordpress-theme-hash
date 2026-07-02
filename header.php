@@ -95,6 +95,13 @@
           e.preventDefault();
         });
       });
+      mobileNav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          if (window.innerWidth > 767) return;
+          if (this.closest('summary')) return;
+          toggleMenu(false);
+        });
+      });
     }
 
     var nav = document.querySelector('.menu-horizontal');
