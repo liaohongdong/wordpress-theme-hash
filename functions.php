@@ -43,6 +43,8 @@ add_action('after_setup_theme', function () {
   register_nav_menus(['primary' => '主导航']);
 });
 
+require_once __DIR__ . '/walker/nav-menu.php';
+
 // /**
 //  * 打印 WordPress Action 钩子的执行顺序
 //  * 仅用于调试，上线前请删除

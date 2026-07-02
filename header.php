@@ -27,9 +27,10 @@
           <?php wp_nav_menu([
             'theme_location' => 'primary',
             'container' => false,
-            'menu_class' => 'nav-menu',
+            'menu_class' => 'menu menu-horizontal gap-1',
+            'walker' => new Hash_Nav_Walker(),
             'fallback_cb' => function () {
-              echo '<ul class="nav-menu"><li><a href="' . home_url() . '">首页</a></li>';
+              echo '<ul class="menu menu-horizontal gap-1"><li><a href="' . home_url() . '">首页</a></li>';
               wp_list_pages(['title_li' => '', 'number' => 5]);
               echo '</ul>';
             },
@@ -55,9 +56,9 @@
       <?php wp_nav_menu([
         'theme_location' => 'primary',
         'container' => false,
-        'menu_class' => 'nav-menu',
+        'menu_class' => 'menu',
         'fallback_cb' => function () {
-          echo '<ul class="nav-menu"><li><a href="' . home_url() . '">首页</a></li>';
+          echo '<ul class="menu"><li><a href="' . home_url() . '">首页</a></li>';
           wp_list_pages(['title_li' => '', 'number' => 5]);
           echo '</ul>';
         },
@@ -89,14 +90,30 @@
     if (menuBtn && mobileNav) {
       menuBtn.addEventListener('click', function(e) { e.stopPropagation(); toggleMenu(); });
       mobileNav.addEventListener('click', function(e) { if (e.target === this) toggleMenu(false); });
-      mobileNav.querySelectorAll('.menu-item-has-children > a').forEach(function(link) {
+      mobileNav.querySelectorAll('.menu-item-has-children > details > summary > a').forEach(function(link) {
         link.addEventListener('click', function(e) {
           if (window.innerWidth > 767) return;
-          var li = this.parentElement;
-          if (li.querySelector('.sub-menu')) { e.preventDefault(); li.classList.toggle('open'); }
+          e.preventDefault();
         });
       });
     }
+
+    var nav = document.querySelector('.menu-horizontal');
+    if (nav) {
+      nav.querySelectorAll('.menu-item-has-children > details').forEach(function(d) {
+        d.addEventListener('mouseenter', function() {
+          clearTimeout(this._closeTimer);
+          this.open = true;
+          var p = this.parentElement.closest('.menu-item-has-children > details');
+          while (p) { clearTimeout(p._closeTimer); p = p.parentElement.closest('.menu-item-has-children > details'); }
+        });
+        d.addEventListener('mouseleave', function() {
+          var self = this;
+          self._closeTimer = setTimeout(function() { self.open = false; }, 120);
+        });
+      });
+    }
+
     var searchBtn = document.getElementById('search-btn');
     var searchOverlay = document.getElementById('search-overlay');
     var searchInput = document.getElementById('search-input');

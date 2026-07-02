@@ -14,7 +14,7 @@ message.config({
 })
 
 const onChange = key => {
-  console.log('切换标签', key)
+  console.log('切换标签1', key)
 }
 
 const _App = () => {
