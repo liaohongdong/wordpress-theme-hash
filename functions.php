@@ -43,6 +43,10 @@ add_action('after_setup_theme', function () {
   register_nav_menus(['primary' => '主导航']);
 });
 
+add_action('wp_enqueue_scripts', function () {
+  wp_enqueue_script('hash-theme', get_template_directory_uri() . '/assets/js/theme.js', [], null, true);
+});
+
 require_once __DIR__ . '/walker/nav-menu.php';
 
 // /**
