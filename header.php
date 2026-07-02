@@ -142,8 +142,11 @@
       });
       document.addEventListener('click', function(e) {
         var a = e.target.closest('a[href]');
-        if (!a || a.host !== location.host || a.getAttribute('href') === '#') return;
-        bar.classList.remove('done');
+        if (!a || a.getAttribute('href') === '#') return;
+        if (a.host && a.host !== location.host) return;
+        bar.classList.remove('done', 'active');
+        bar.style.width = '0';
+        void bar.offsetWidth;
         bar.classList.add('active');
       });
     }
