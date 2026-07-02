@@ -98,3 +98,9 @@
 .entry-content iframe { max-width: 100%; border-radius: 0.75rem; }
 .entry-content .wp-block-image { margin-top: 1.5rem; margin-bottom: 1.5rem; }
 .entry-content .wp-block-image figcaption { text-align: center; font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem; }
+
+/* ─── Loading bar ─── */
+#loading-bar { position: fixed; top: 0; left: 0; z-index: 9999; width: 0; height: 3px;
+  background: var(--color-primary); transition: width 0.1s linear, opacity 0.3s; }
+#loading-bar.active { width: 80%; }
+#loading-bar.done { width: 100%; opacity: 0; }
