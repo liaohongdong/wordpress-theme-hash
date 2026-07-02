@@ -100,7 +100,7 @@
 .entry-content .wp-block-image figcaption { text-align: center; font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem; }
 
 /* ─── Loading bar ─── */
-#loading-bar { position: fixed; top: 0; left: 0; z-index: 9999; width: 0; height: 3px;
-  background: var(--color-primary); transition: width 0.1s linear, opacity 0.3s; }
-#loading-bar.active { width: 80%; }
-#loading-bar.done { width: 100%; opacity: 0; }
+#loading-bar { position: fixed; top: 0; left: 0; z-index: 99999; width: 0; height: 3px;
+  background: #3b82f6; }
+#loading-bar.active { width: 80%; transition: width 0.2s linear; }
+#loading-bar.done { width: 100%; opacity: 0; transition: width 0.15s linear, opacity 0.3s; }

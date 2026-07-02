@@ -5145,18 +5145,19 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 99999;
   width: 0;
   height: 3px;
-  background: var(--color-primary);
-  transition: width 0.1s linear, opacity 0.3s;
+  background: #3b82f6;
 }
 #loading-bar.active {
   width: 80%;
+  transition: width 0.2s linear;
 }
 #loading-bar.done {
   width: 100%;
   opacity: 0;
+  transition: width 0.15s linear, opacity 0.3s;
 }
 @layer base {
   :where(:root),:root:has(input.theme-controller[value=light]:checked),[data-theme=light] {

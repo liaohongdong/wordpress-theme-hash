@@ -138,7 +138,7 @@
       window.addEventListener('load', function() {
         bar.classList.remove('active');
         bar.classList.add('done');
-        setTimeout(function() { bar.classList.remove('done'); bar.style.width = '0'; }, 300);
+        setTimeout(function() { bar.classList.remove('done'); }, 300);
       });
       document.addEventListener('click', function(e) {
         var a = e.target.closest('a[href]');
@@ -146,7 +146,7 @@
         if (a.host && a.host !== location.host) return;
         bar.classList.remove('done', 'active');
         bar.style.width = '0';
-        void bar.offsetWidth;
+        void bar.offsetHeight;
         bar.classList.add('active');
       });
     }
