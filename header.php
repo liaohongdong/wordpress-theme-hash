@@ -16,9 +16,14 @@
         <div class="flex items-center gap-2 sm:gap-3 min-w-0">
           <?php if (has_custom_logo()) : ?>
             <?php the_custom_logo(); ?>
-          <?php elseif ($logo = hash_config('light_logo')) : ?>
+          <?php elseif ($light_logo = hash_config('light_logo')) : ?>
             <a href="<?php echo home_url(); ?>">
-              <img src="<?php echo esc_url($logo); ?>" alt="<?php bloginfo('name'); ?>" class="max-h-8 sm:max-h-10 w-auto">
+              <picture>
+                <?php if ($dark_logo = hash_config('dark_logo')) : ?>
+                <source srcset="<?php echo esc_url($dark_logo); ?>" media="(prefers-color-scheme: dark)">
+                <?php endif; ?>
+                <img src="<?php echo esc_url($light_logo); ?>" alt="<?php bloginfo('name'); ?>" class="max-h-8 sm:max-h-10 w-auto">
+              </picture>
             </a>
           <?php else : ?>
             <a href="<?php echo home_url(); ?>" class="text-lg sm:text-xl font-bold tracking-tight text-gray-900 no-underline hover:text-primary transition-colors truncate">
