@@ -16,6 +16,10 @@
         <div class="flex items-center gap-2 sm:gap-3 min-w-0">
           <?php if (has_custom_logo()) : ?>
             <?php the_custom_logo(); ?>
+          <?php elseif ($logo = hash_config('light_logo')) : ?>
+            <a href="<?php echo home_url(); ?>">
+              <img src="<?php echo esc_url($logo); ?>" alt="<?php bloginfo('name'); ?>" class="max-h-8 sm:max-h-10 w-auto">
+            </a>
           <?php else : ?>
             <a href="<?php echo home_url(); ?>" class="text-lg sm:text-xl font-bold tracking-tight text-gray-900 no-underline hover:text-primary transition-colors truncate">
               <?php bloginfo('name'); ?>
