@@ -45,12 +45,12 @@ tab_options:
         title: 允许切换主题模式
         desc: 允许切换主题模式
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 允许
-            value: Y
+            value: "Y"
           - label: 不允许
-            value: N
+            value: "N"
       - key: light_logo
         title: 高亮模式下LOGO
         desc: 比例：500*125，请尽量选择png无底色图片
@@ -85,42 +85,42 @@ tab_options:
         title: 禁用Gutenberg编辑器
         desc: 禁用Gutenberg编辑器
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: hide_footer_wp_text
         title: 隐藏底部'感谢使用WordPress进行创作'和左上角标识
         desc: 隐藏底部'感谢使用WordPress进行创作'和左上角标识
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: site_gray_mode
         title: 全站变灰（可供用于悼念日或其他事件变灰需求）
         desc: 全站变灰
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: index_carousel
         title: 显示首页幻灯片
         desc: 显示首页幻灯片
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: index_carousel_max
         title: 幻灯最大显示数量
         desc: 幻灯最大显示数量
@@ -130,12 +130,12 @@ tab_options:
         title: 启用后台登录保护
         desc: 启用后则用'wp-login.php?{后台登录保护参数}={后台登录保护值}'的方式访问
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: lp_user
         title: 后台登录保护参数
         desc: 后台登录保护参数
@@ -155,22 +155,22 @@ tab_options:
         title: 启用缩略图延迟加载
         desc: 启用缩略图延迟加载
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: img_lazy_paged
         title: 启用正文图片延迟加载
         desc: 启用正文图片延迟加载
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: comment_avatar
         title: 留言头像
         desc: 比例：512*512 png无底色图片
@@ -184,112 +184,112 @@ tab_options:
       - key: comment_ajax
         title: 评论Ajax翻页
         type: radio
-        default: Y
+        default: "Y"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: comment_level
         title: 显示评论等级
         type: radio
-        default: Y
+        default: "Y"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: comment_mail_notify
         title: 评论回复邮件通知
         type: radio
-        default: Y
+        default: "Y"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: link_blank_content
         title: 新标签页打开内容
         type: radio
-        default: Y
+        default: "Y"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: page_ajax_load
         title: 页面无刷新加载
         type: radio
-        default: Y
+        default: "Y"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: async_view
         title: 异步浏览量统计
         desc: 开启（此选项为开启缓存后浏览量不自增问题解决方案）
         type: radio
-        default: Y
+        default: "Y"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: page_animate
         title: 页面模块载入动画
         type: radio
-        default: Y
+        default: "Y"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: comment_has_at
         title: 评论内容显示@
         type: radio
-        default: Y
+        default: "Y"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: page_copy_right
         title: 显示正文版权说明
         type: radio
-        default: Y
+        default: "Y"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: page_bottom_recommend
         title: 显示正文底部相关推荐
         type: radio
-        default: Y
+        default: "Y"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: link_page
         title: 友情链接页面
         type: radio
-        default: Y
+        default: "Y"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: post_reward
         title: 文章赞赏
         type: radio
-        default: Y
+        default: "Y"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: post_reward_alipay
         title: 文章赞赏支付宝二维码
         desc: 512*512 png无底色图片
@@ -319,12 +319,12 @@ tab_options:
         title: 启用QQ登录
         desc: QQ登录
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: oauth_qq_id
         title: QQ互联APP_ID
         desc: QQ互联APP
@@ -339,12 +339,12 @@ tab_options:
         title: 启用微信登录
         desc: 微信登录
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
 
   - key: cms_layout_set
     title: CMS布局设置
@@ -354,12 +354,12 @@ tab_options:
         title: 最新文章
         desc: 显示最新文章
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: cms_show_new_num
         title: 最新文章显示数量
         type: text
@@ -367,12 +367,12 @@ tab_options:
       - key: cms_show_2box
         title: 两栏CMS分类列表
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: cms_show_2box_id
         title: 两栏CMS分类ID列表
         desc: 每个ID之间用,进行分隔
@@ -417,12 +417,12 @@ tab_options:
       - key: company_news_open
         title: 显示新闻
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: company_news_title
         title: 新闻模块标题
         type: text
@@ -449,12 +449,12 @@ tab_options:
       - key: vd_comment
         title: 启用评论防刷验证
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: vd_turnstile_site_key
         title: turnstile site key
         desc: 站点密钥 <a href="https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/">接入地址</a>
@@ -473,12 +473,12 @@ tab_options:
       - key: ad_g_top_c
         title: 启用全站顶部广告
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: ad_g_top
         title: 全站顶部广告内容
         type: textarea
@@ -486,12 +486,12 @@ tab_options:
       - key: ad_g_bottom_c
         title: 启用全站底部广告
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: ad_g_bottom
         title: 全站底部广告内容
         type: textarea
@@ -499,12 +499,12 @@ tab_options:
       - key: ad_page_t_c
         title: 启用文章内顶部广告
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: ad_page_t
         title: 文章内顶部广告内容
         type: textarea
@@ -512,12 +512,12 @@ tab_options:
       - key: ad_page_c_b_c
         title: 启用文章内容底部广告
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: ad_page_c_b
         title: 文章内容底部广告内容
         type: textarea
@@ -525,12 +525,12 @@ tab_options:
       - key: ad_comment_t_c
         title: 启用评论上方广告
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: ad_comment_t
         title: 评论上方广告内容
         type: textarea
@@ -543,21 +543,21 @@ tab_options:
       - key: smtp_open
         title: 启用主题SMTP覆盖WordPress默认配置
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: smtp_ssl
         title: 启用SSL安全模式
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: smtp_form_addr
         title: 发件人地址
         type: text
@@ -592,12 +592,12 @@ tab_options:
         title: 启用主题SEO功能
         desc: 若您正在使用其它的SEO插件，请取消勾选
         type: radio
-        default: N
+        default: "N"
         options:
           - label: 是
-            value: Y
+            value: "Y"
           - label: 否
-            value: N
+            value: "N"
       - key: web_title
         title: 网站Title
         desc: 留空则不显示
