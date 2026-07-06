@@ -13,12 +13,6 @@
 .menu-horizontal { flex-direction: row; }
 .header-inner { max-width: 1440px; margin-inline: auto; }
 
-/* ─── Theme toggle ─── */
-#theme-toggle .sun { display: block; }
-#theme-toggle .moon { display: none; }
-#theme-toggle.is-dark .sun { display: none; }
-#theme-toggle.is-dark .moon { display: block; }
-
 /* ─── Horizontal menu hover & submenu sizing ─── */
 .menu-horizontal > .menu-item-has-children { position: relative; }
 .menu-horizontal > .menu-item-has-children > details { overflow: visible; }
