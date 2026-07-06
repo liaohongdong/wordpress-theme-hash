@@ -1,4 +1,37 @@
 (function() {
+    var html = document.documentElement;
+    var themeMode = html.getAttribute('data-theme-mode') || 'light';
+    var changeTheme = html.getAttribute('data-change-theme') || 'N';
+
+    function setTheme(theme) {
+      html.setAttribute('data-theme', theme);
+      try { localStorage.setItem('hash_theme', theme); } catch(e) {}
+      var btn = document.getElementById('theme-toggle');
+      if (btn) { btn.classList.toggle('is-dark', theme === 'dark'); }
+    }
+
+    function getPreferredTheme() {
+      try {
+        var saved = localStorage.getItem('hash_theme');
+        if (saved) return saved;
+      } catch(e) {}
+      return themeMode;
+    }
+
+    if (changeTheme === 'Y') {
+      var themeBtn = document.getElementById('theme-toggle');
+      if (themeBtn) {
+        themeBtn.classList.remove('hidden');
+        setTheme(getPreferredTheme());
+        themeBtn.addEventListener('click', function() {
+          var current = html.getAttribute('data-theme') || 'light';
+          setTheme(current === 'dark' ? 'light' : 'dark');
+        });
+      }
+    } else {
+      setTheme(themeMode);
+    }
+
     var menuBtn = document.getElementById('menu-btn');
     var mobileNav = document.getElementById('mobile-nav');
     function toggleMenu(open) {
