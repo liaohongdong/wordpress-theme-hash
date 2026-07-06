@@ -11,6 +11,7 @@
 
 /* ─── DaisyUI menu layer order fix ─── */
 .menu-horizontal { flex-direction: row; }
+.header-inner { max-width: 1440px; margin-inline: auto; }
 
 /* ─── Horizontal menu hover & submenu sizing ─── */
 .menu-horizontal > .menu-item-has-children { position: relative; }

@@ -11,7 +11,7 @@
 
 <div id="page" class="min-h-screen flex flex-col">
   <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200/60 relative">
-    <div class="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="header-inner w-full px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-14 sm:h-16">
         <div class="flex items-center gap-2 sm:gap-3 min-w-0">
           <?php if (has_custom_logo()) : ?>
