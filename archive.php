@@ -2,11 +2,11 @@
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
   <div class="flex flex-col gap-1 mb-8">
-    <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">
+    <h1 class="text-2xl sm:text-3xl font-bold text-base-content">
       <?php the_archive_title(); ?>
     </h1>
     <?php if (get_the_archive_description()) : ?>
-      <p class="text-sm text-gray-400"><?php echo get_the_archive_description(); ?></p>
+      <p class="text-sm text-base-content/50"><?php echo get_the_archive_description(); ?></p>
     <?php endif; ?>
   </div>
 
@@ -29,7 +29,7 @@
 
   <?php else : ?>
     <div class="text-center py-20">
-      <p class="text-gray-400 text-lg">暂无内容</p>
+      <p class="text-base-content/50 text-lg">暂无内容</p>
     </div>
   <?php endif; ?>
 </div>

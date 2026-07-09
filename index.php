@@ -3,8 +3,8 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
   <?php if (have_posts()) : ?>
     <div class="flex flex-col gap-1 mb-8">
-      <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">博客</h1>
-      <p class="text-sm text-gray-400">最新文章</p>
+      <h1 class="text-2xl sm:text-3xl font-bold text-base-content">博客</h1>
+      <p class="text-sm text-base-content/50">最新文章</p>
     </div>
 
     <div class="<?php echo hash_config('post_style') === 'card'
@@ -25,7 +25,7 @@
 
   <?php else : ?>
     <div class="text-center py-20">
-      <p class="text-gray-400 text-lg">暂无内容</p>
+      <p class="text-base-content/50 text-lg">暂无内容</p>
     </div>
   <?php endif; ?>
 </div>

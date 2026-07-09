@@ -39,6 +39,17 @@
       });
     }
 
+    var themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      var currentTheme = localStorage.getItem('theme') || themeToggle.getAttribute('data-default') || 'light';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      themeToggle.addEventListener('click', function() {
+        var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    }
+
     var searchBtn = document.getElementById('search-btn');
     var searchOverlay = document.getElementById('search-overlay');
     var searchInput = document.getElementById('search-input');

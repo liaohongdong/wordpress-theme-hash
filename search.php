@@ -2,10 +2,10 @@
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
   <div class="flex flex-col gap-1 mb-8">
-    <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">
-      搜索：<?php echo get_search_query(); ?>
-    </h1>
-    <p class="text-sm text-gray-400">
+    <h1 class="text-2xl sm:text-3xl font-bold text-base-content">
+       搜索：<?php echo get_search_query(); ?>
+     </h1>
+     <p class="text-sm text-base-content/50">
       <?php global $wp_query; echo $wp_query->found_posts; ?> 个结果
     </p>
   </div>
@@ -29,7 +29,7 @@
 
   <?php else : ?>
     <div class="text-center py-20">
-      <p class="text-gray-400 text-lg">未找到匹配结果</p>
+      <p class="text-base-content/50 text-lg">未找到匹配结果</p>
       <a href="<?php echo home_url(); ?>" class="inline-block mt-4 text-sm text-primary hover:text-primary-dark no-underline">返回首页 →</a>
     </div>
   <?php endif; ?>

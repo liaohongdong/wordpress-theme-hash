@@ -12,7 +12,7 @@
 
   <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 leading-tight"><?php the_title(); ?></h1>
 
-  <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:text-sm text-gray-400 mb-6 sm:mb-8 pb-5 sm:pb-6 border-b border-gray-100">
+  <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:text-sm text-base-content/50 mb-6 sm:mb-8 pb-5 sm:pb-6">
     <span class="inline-flex items-center gap-1.5">
       <svg class="w-3.5 sm:w-4 h-3.5 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
       <?php echo get_the_date('Y-m-d'); ?>
@@ -40,8 +40,8 @@
   </div>
 
   <?php if (has_tag()) : ?>
-    <div class="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-gray-100">
-      <?php the_tags('<span class="text-sm font-medium text-gray-500">标签：</span> ', ' ', ''); ?>
+    <div class="mt-8 sm:mt-10 pt-6 sm:pt-8">
+      <?php the_tags('<span class="text-sm font-medium text-base-content/60">标签：</span> ', ' ', ''); ?>
     </div>
   <?php endif; ?>
 
@@ -49,24 +49,24 @@
   $prev = get_previous_post();
   $next = get_next_post();
   if ($prev || $next) : ?>
-  <nav class="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-100 flex flex-col sm:flex-row gap-4 sm:gap-6">
+  <nav class="mt-10 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row gap-4 sm:gap-6">
     <?php if ($prev) : ?>
-      <a href="<?php echo get_permalink($prev); ?>" class="flex-1 group p-4 sm:p-5 rounded-xl border border-gray-200 no-underline hover:border-primary/30 hover:bg-primary/5 transition-all">
-        <span class="text-xs text-gray-400">← 上一篇</span>
-        <p class="text-sm sm:text-base font-medium text-gray-700 group-hover:text-primary mt-1 line-clamp-2"><?php echo get_the_title($prev); ?></p>
+      <a href="<?php echo get_permalink($prev); ?>" class="flex-1 group p-4 sm:p-5 rounded-xl shadow-sm no-underline hover:bg-primary/5 transition-all">
+        <span class="text-xs text-base-content/50">← 上一篇</span>
+        <p class="text-sm sm:text-base font-medium text-base-content/80 group-hover:text-primary mt-1 line-clamp-2"><?php echo get_the_title($prev); ?></p>
       </a>
     <?php endif; ?>
     <?php if ($next) : ?>
-      <a href="<?php echo get_permalink($next); ?>" class="flex-1 group p-4 sm:p-5 rounded-xl border border-gray-200 no-underline hover:border-primary/30 hover:bg-primary/5 transition-all text-right">
-        <span class="text-xs text-gray-400">下一篇 →</span>
-        <p class="text-sm sm:text-base font-medium text-gray-700 group-hover:text-primary mt-1 line-clamp-2"><?php echo get_the_title($next); ?></p>
+      <a href="<?php echo get_permalink($next); ?>" class="flex-1 group p-4 sm:p-5 rounded-xl shadow-sm no-underline hover:bg-primary/5 transition-all text-right">
+        <span class="text-xs text-base-content/50">下一篇 →</span>
+        <p class="text-sm sm:text-base font-medium text-base-content/80 group-hover:text-primary mt-1 line-clamp-2"><?php echo get_the_title($next); ?></p>
       </a>
     <?php endif; ?>
   </nav>
   <?php endif; ?>
 
   <?php if (comments_open() || get_comments_number()) : ?>
-    <div class="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-gray-100">
+    <div class="mt-8 sm:mt-10 pt-6 sm:pt-8">
       <?php comments_template(); ?>
     </div>
   <?php endif; ?>
