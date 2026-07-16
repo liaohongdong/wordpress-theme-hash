@@ -1,7 +1,7 @@
   </main>
 
   <footer class="bg-base-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+    <div class="footer-inner w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pb-6 sm:pb-8">
         <div>
           <h3 class="text-sm font-semibold text-base-content mb-3">关于</h3>
