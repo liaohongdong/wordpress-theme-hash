@@ -18,12 +18,10 @@
             <?php the_custom_logo(); ?>
           <?php elseif ($light_logo = hash_config('light_logo')) : ?>
             <a href="<?php echo home_url(); ?>">
-              <picture>
-                <?php if ($dark_logo = hash_config('dark_logo')) : ?>
-                <source srcset="<?php echo esc_url($dark_logo); ?>" media="(prefers-color-scheme: dark)">
-                <?php endif; ?>
-                <img src="<?php echo esc_url($light_logo); ?>" alt="<?php bloginfo('name'); ?>" class="max-h-8 sm:max-h-10 w-auto">
-              </picture>
+              <img class="logo-light max-h-8 sm:max-h-10 w-auto" src="<?php echo esc_url($light_logo); ?>" alt="<?php bloginfo('name'); ?>">
+              <?php if ($dark_logo = hash_config('dark_logo')) : ?>
+              <img class="logo-dark max-h-8 sm:max-h-10 w-auto" src="<?php echo esc_url($dark_logo); ?>" alt="<?php bloginfo('name'); ?>">
+              <?php endif; ?>
             </a>
           <?php else : ?>
             <a href="<?php echo home_url(); ?>" class="text-lg sm:text-xl font-bold tracking-tight text-base-content no-underline hover:text-primary transition-colors truncate">
