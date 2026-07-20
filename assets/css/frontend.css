@@ -4,6 +4,7 @@
 @layer theme {
   :root, :host {
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
     --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
@@ -5836,3 +5837,6 @@ html[data-theme="dark"] #theme-toggle .theme-icon-dark {
     }
   }
 }
+[data-theme="dark"] .logo-light { display: none; }
+:root:not([data-theme="dark"]) .logo-dark { display: none; }
+
