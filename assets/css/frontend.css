@@ -5840,3 +5840,18 @@ html[data-theme="dark"] #theme-toggle .theme-icon-dark {
 [data-theme="dark"] .logo-light { display: none; }
 :root:not([data-theme="dark"]) .logo-dark { display: none; }
 
+.blog-masonry {
+  columns: 1;
+  column-gap: 1.5rem;
+}
+@media (min-width: 640px) {
+  .blog-masonry {
+    columns: 2;
+  }
+}
+@media (min-width: 1024px) {
+  .blog-masonry {
+    columns: 3;
+  }
+}
+
